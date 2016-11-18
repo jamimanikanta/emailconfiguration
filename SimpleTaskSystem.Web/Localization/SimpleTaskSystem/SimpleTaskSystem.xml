@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="en">
+  <texts>
+    <text name="HomePage" value="Home page" />
+    <text name="Seeker" value="Seeker" />
+    <text name="Holder" value="Holder" />
+    <text name="About" value="About" />
+    <text name="WellcomeMessage" value="Welcome to Share 2 Care!" />
+    <text name="Home_ThisIsATemplate" value="This portal is a end point to your car-parking worries..." />
+    <text name="Home_AspNetDescription" value="This is a very useful tool to manage parking slots effectively for both  the parking slot owners(holders) and persons who seek a parking slot(seekers)..." />
+    <text name="Home_AspNetBoilerplateDescription" value="ASP.NET Boilerplate is a framework to build web based applications with best practices and most popular tools." />
+    <text name="LearnMore" value="Learn more" />
+    <text name="Home_AngularDescription" value="AngularJs is a Single-Page Application framework by Google. It lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop." />
+    <text name="AboutFormat" value="About {0}" />
+    <text name="About_AspNetBoilerplateDescription" value="ASP.NET Boilerplate is a starting point for new web applications with best practices and most popular tools! ASP.NET Boilerplate provides an infrastructure for &lt;strong&gt;NLayer architecture&lt;/strong&gt; and &lt;strong&gt;Domain Driven Design&lt;/strong&gt;." />
+    <text name="ForMoreInformation" value="For more information" />
+  </texts>
+</localizationDictionary>
