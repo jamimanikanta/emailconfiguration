@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Smps.Core.BusinessObjects.Account
 {
+    /// <summary>
+    /// Contains the user profile.
+    /// </summary>
    public class UserProfile
     {
     }
