@@ -1,0 +1,31 @@
+﻿//-----------------------------------------------------------------------
+// <copyright file="RouteConfig.cs" company="CompanyName">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Smps.WebApi
+{
+    using System.Web.Mvc;
+    using System.Web.Routing;
+
+    /// <summary>
+    /// This class contains the route config details.
+    /// </summary>
+    public class RouteConfig
+    {
+        /// <summary>
+        /// This method registers routes.
+        /// </summary>
+        /// <param name="routes">The routes to register.</param>
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { action = "Index", id = UrlParameter.Optional });
+        }
+    }
+}
