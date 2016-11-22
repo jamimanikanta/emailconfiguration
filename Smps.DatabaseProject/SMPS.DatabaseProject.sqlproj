@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{c91531f1-710b-4a30-8b1d-9e7bddc7a9e7}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -66,9 +66,10 @@
     <Folder Include="05.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="01.Tables\01.AllocationTypes.sql" />
-    <Build Include="01.Tables\02.Users.sql" />
-    <Build Include="01.Tables\03.HolderDetails.sql" />
-    <Build Include="01.Tables\04.SeekerDetails.sql" />
+    <Build Include="01.Tables\01.Users.sql" />
+    <Build Include="01.Tables\02.HolderDetails.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Smps.DatabaseProject.publish.xml" />
   </ItemGroup>
 </Project>

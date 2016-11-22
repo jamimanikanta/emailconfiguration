@@ -140,7 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -171,9 +173,9 @@
       <Project>{e96523fa-7d1a-4e4b-b5a9-126430a44f44}</Project>
       <Name>Smps.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SMPS.DAL\Smps.DAL.csproj">
+    <ProjectReference Include="..\SMPS.Infrastructure\Smps.Infrastructure.csproj">
       <Project>{4f99aab3-cabb-4da3-8a6b-c127de1dc4c0}</Project>
-      <Name>Smps.DAL</Name>
+      <Name>Smps.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

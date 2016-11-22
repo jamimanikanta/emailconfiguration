@@ -6,7 +6,8 @@
 
 namespace Smps.DAL.Data.Repositories
 {
-
+    using System;
+    using System.Linq;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account.Repositories;
 
@@ -19,7 +20,22 @@ namespace Smps.DAL.Data.Repositories
 
         public bool IsValidUser(string userId, string password)
         {
-            return true;
+            bool IsValidUser = false;
+            try
+            {
+                using (SMPSEntities objectContext = new SMPSEntities())
+                {
+                    IQueryable<User> users = objectContext.Users;
+                    IsValidUser = users.Where(u => u.UserLoginId == userId).Count() > 0;
+                }
+                return IsValidUser;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
     }
 }

@@ -14,12 +14,28 @@ namespace Smps.Core.Services
         private IUserAccountRepository userAccount;
         public UserAccount(IUserAccountRepository userAccount)
         {
-            this.userAccount = userAccount;
+            try
+            {
+                this.userAccount = userAccount;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public UserProfile GetUserProfile(string userId)
         {
-            return this.userAccount.GetUserProfile(userId);
+            try
+            {
+                return this.userAccount.GetUserProfile(userId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 

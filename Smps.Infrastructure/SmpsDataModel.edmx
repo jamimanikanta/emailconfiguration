@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SMPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HolderDetails">
+          <Key>
+            <PropertyRef Name="HolderDetailId" />
+          </Key>
+          <Property Name="HolderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ParkingSlotNumber" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="SlotReleasedDate" Type="datetime" Nullable="false" />
+          <Property Name="AllocationType" Type="int" Nullable="false" />
+          <Property Name="OperationType" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpNo" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="int" />
+          <Property Name="UserLoginId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParkingSlotNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OperationType" Type="smallint" Nullable="false" />
+        </EntityType>
+        <Association Name="Fk_HolderDetails_UserId_Users_Id">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="HolderDetails" Type="Self.HolderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolderDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SMPSModelStoreContainer">
+          <EntitySet Name="HolderDetails" EntityType="Self.HolderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_HolderDetails_UserId_Users_Id" Association="Self.Fk_HolderDetails_UserId_Users_Id">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="HolderDetails" EntitySet="HolderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMPSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HolderDetail">
+          <Key>
+            <PropertyRef Name="HolderDetailId" />
+          </Key>
+          <Property Name="HolderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ParkingSlotNumber" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SlotReleasedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AllocationType" Type="Int32" Nullable="false" />
+          <Property Name="OperationType" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.Fk_HolderDetails_UserId_Users_Id" FromRole="HolderDetails" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpNo" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="Int32" />
+          <Property Name="UserLoginId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParkingSlotNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OperationType" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="HolderDetails" Relationship="Self.Fk_HolderDetails_UserId_Users_Id" FromRole="Users" ToRole="HolderDetails" />
+        </EntityType>
+        <Association Name="Fk_HolderDetails_UserId_Users_Id">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="HolderDetails" Type="Self.HolderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HolderDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SMPSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HolderDetails" EntityType="Self.HolderDetail" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="Fk_HolderDetails_UserId_Users_Id" Association="Self.Fk_HolderDetails_UserId_Users_Id">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="HolderDetails" EntitySet="HolderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SMPSModelStoreContainer" CdmEntityContainer="SMPSEntities">
+          <EntitySetMapping Name="HolderDetails">
+            <EntityTypeMapping TypeName="SMPSModel.HolderDetail">
+              <MappingFragment StoreEntitySet="HolderDetails">
+                <ScalarProperty Name="HolderDetailId" ColumnName="HolderDetailId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ParkingSlotNumber" ColumnName="ParkingSlotNumber" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SlotReleasedDate" ColumnName="SlotReleasedDate" />
+                <ScalarProperty Name="AllocationType" ColumnName="AllocationType" />
+                <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SMPSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="ParkingSlotNumber" ColumnName="ParkingSlotNumber" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
