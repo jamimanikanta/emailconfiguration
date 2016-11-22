@@ -1,98 +1,80 @@
 'use strict';
 angular.module("ngLocale", [], ["$provide", function($provide) {
 var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "many", OTHER: "other"};
-function getDecimals(n) {
-  n = n + '';
-  var i = n.indexOf('.');
-  return (i == -1) ? 0 : n.length - i - 1;
-}
-
-function getVF(n, opt_precision) {
-  var v = opt_precision;
-
-  if (undefined === v) {
-    v = Math.min(getDecimals(n), 3);
-  }
-
-  var base = Math.pow(10, v);
-  var f = ((n * base) | 0) % base;
-  return {v: v, f: f};
-}
-
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-      "AM",
-      "PM"
+      "PG",
+      "PTG"
     ],
     "DAY": [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
+      "Ahad",
+      "Isnin",
+      "Selasa",
+      "Rabu",
+      "Khamis",
+      "Jumaat",
+      "Sabtu"
     ],
     "ERANAMES": [
-      "Before Christ",
-      "Anno Domini"
+      "S.M.",
+      "TM"
     ],
     "ERAS": [
-      "BC",
-      "AD"
+      "S.M.",
+      "TM"
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
-      "January",
-      "February",
-      "March",
+      "Januari",
+      "Februari",
+      "Mac",
       "April",
-      "May",
-      "June",
-      "July",
-      "August",
+      "Mei",
+      "Jun",
+      "Julai",
+      "Ogos",
       "September",
-      "October",
+      "Oktober",
       "November",
-      "December"
+      "Disember"
     ],
     "SHORTDAY": [
-      "Sun",
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat"
+      "Ahd",
+      "Isn",
+      "Sel",
+      "Rab",
+      "Kha",
+      "Jum",
+      "Sab"
     ],
     "SHORTMONTH": [
       "Jan",
       "Feb",
-      "Mar",
+      "Mac",
       "Apr",
-      "May",
+      "Mei",
       "Jun",
       "Jul",
-      "Aug",
+      "Ogo",
       "Sep",
-      "Oct",
+      "Okt",
       "Nov",
-      "Dec"
+      "Dis"
     ],
     "STANDALONEMONTH": [
-      "January",
-      "February",
-      "March",
+      "Januari",
+      "Februari",
+      "Mac",
       "April",
-      "May",
-      "June",
-      "July",
-      "August",
+      "Mei",
+      "Jun",
+      "Julai",
+      "Ogos",
       "September",
-      "October",
+      "Oktober",
       "November",
-      "December"
+      "Disember"
     ],
     "WEEKENDRANGE": [
       5,
@@ -103,8 +85,8 @@ $provide.value("$locale", {
     "medium": "d MMM y h:mm:ss a",
     "mediumDate": "d MMM y",
     "mediumTime": "h:mm:ss a",
-    "short": "dd/MM/y h:mm a",
-    "shortDate": "dd/MM/y",
+    "short": "d/MM/yy h:mm a",
+    "shortDate": "d/MM/yy",
     "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
@@ -136,8 +118,8 @@ $provide.value("$locale", {
       }
     ]
   },
-  "id": "en-io",
-  "localeID": "en_IO",
-  "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
+  "id": "ms-latn-sg",
+  "localeID": "ms_Latn_SG",
+  "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);
