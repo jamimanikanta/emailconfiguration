@@ -66,9 +66,7 @@
     <Folder Include="05.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="01.Tables\01.AllocationTypes.sql" />
-    <Build Include="01.Tables\02.Users.sql" />
-    <Build Include="01.Tables\03.HolderDetails.sql" />
-    <Build Include="01.Tables\04.SeekerDetails.sql" />
+    <Build Include="01.Tables\01.Users.sql" />
+    <Build Include="01.Tables\02.HolderDetails.sql" />
   </ItemGroup>
 </Project>

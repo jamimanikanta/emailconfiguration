@@ -25,6 +25,7 @@ namespace Smps.WebApi.Controllers
         /// <param name="obj">The user account instance</param>
         public UserAccountController(IUserAccount obj)
         {
+           
             this.obj = obj;
         }
 
