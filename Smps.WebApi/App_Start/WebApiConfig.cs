@@ -6,6 +6,7 @@
 
 namespace Smps.WebApi
 {
+    using System.Net.Http.Headers;
     using System.Web.Http;
 
     /// <summary>
@@ -21,6 +22,8 @@ namespace Smps.WebApi
         {
             // Web API configuration and services
 
+            config.EnableCors(); 
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -28,6 +31,11 @@ namespace Smps.WebApi
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional });
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes
+    .Add(new MediaTypeHeaderValue("text/html"));
         }
+
+
     }
 }

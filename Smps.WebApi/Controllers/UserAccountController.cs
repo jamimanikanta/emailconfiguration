@@ -8,10 +8,12 @@ namespace Smps.WebApi.Controllers
 {
     using System.Web.Http;
     using Smps.Core.Interfaces.Account;
-    
+    using System.Web.Http.Cors;
+
     /// <summary>
     /// This class contains the methods related to user account.
     /// </summary>
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserAccountController : BaseController
     {
         /// <summary>
