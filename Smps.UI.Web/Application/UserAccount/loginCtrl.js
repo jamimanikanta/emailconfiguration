@@ -1,24 +1,30 @@
 ﻿(function () {
-    angular.module('SMPSapp').controller("loginCtrl", ['$scope', '$rootScope', '$http', '$state', function ($scope, $rootScope, $http, $state) {
+    angular.module('SMPSapp').controller("loginCtrl", ['$scope', '$rootScope', 'userAccountService', '$state', function ($scope, $rootScope, userAccountService, $state) {
         $scope.userObject = { userName: "", password: "" };
+        $scope.message = "";
+       
         $scope.login = function () {
             $scope.errorFlag = false;
             $scope.userObject;
-            $http(
-                    {
-                        method: 'GET',
-                        url: $rootScope.apiURL + "UserAccount/IsUserValid?userId="
-                                + $scope.userName + "&password="
-                                + $scope.password
-                    })
-                    .then(
-                            function (response) {
-                                $scope.userObject = response.data;
-                                $state.go('home');
-                            }).catch(function (response, status) {
-                                $scope.errorFlag = true;
-                                //// $state.go('login');
-                            });
+
+            ////To call Service
+            userAccountService.authenticateUser($scope.userObject)
+            .then(
+                    function (response) {
+                        //// To be uncomment if api results the user object $scope.userObject = response.data;
+                        if (response.data == true) {
+                            $scope.message = "";
+                            $state.go('home');
+                        }
+                        else {
+                            $scope.message = "Incorrect password or confirmation code entered. Please try again";
+                        }
+
+                    }).catch(function (response, status) {
+                        $scope.message = "Login Failed.Due to server not responding";
+                    });
         };
+
+
     }]);
 })();

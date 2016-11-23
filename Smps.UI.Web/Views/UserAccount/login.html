@@ -1,4 +1,4 @@
-﻿<div class="well well-sm text-center"  >
+﻿<div class="well well-sm text-center">
     <img src="./Content/images/epam-logo.png" class="img-responsive img-circle center-block" alt="<epam>" />
     <div class="modal-content" style="margin-top: -17px;">
         <!-- Begin # DIV Form -->
@@ -9,17 +9,18 @@
             <!-- Begin # Login Form -->
             <form id="login-form" style="font-size:16px" ng-submit="login()">
                 <div class="modal-body">
+                    <div class="alert alert-danger" ng-show="((message).length > 0)">{{message}}</div>
                     <div class="form-group">
                         <input id="username" class="border-color" name="username"
-                               ng-model="username"
+                               ng-model="userObject.userName"
                                ng-minlength="6"
                                autofocus required
                                placeholder="Please Enter User Name" />
                     </div>
                     <div class="form-group">
-                        <input id="password" type="password" name="password" ng-model="password"
-                               maxlength="16" autocomplete="off" required 
-                               placeholder="Please Enter Password"/>
+                        <input id="password" type="password" name="password" ng-model="userObject.password"
+                               maxlength="16" autocomplete="off" required
+                               placeholder="Please Enter Password" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -36,4 +37,3 @@
     </div>
 
 </div>
-
