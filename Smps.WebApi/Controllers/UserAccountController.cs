@@ -9,6 +9,7 @@ namespace Smps.WebApi.Controllers
     using System.Web.Http;
     using Smps.Core.Interfaces.Account;
     using System.Web.Http.Cors;
+    using Core.BusinessObjects.Account;
 
     /// <summary>
     /// This class contains the methods related to user account.
@@ -42,6 +43,13 @@ namespace Smps.WebApi.Controllers
         {
             bool isUserValid = this.obj.IsValidUser(userId, password);
             return isUserValid;
+        }
+
+        [HttpGet]
+        public UserProfile GetUserProfile(string userId)
+        {
+            UserProfile userProfile = this.obj.GetUserProfile(userId);
+            return userProfile;
         }
     }
 }

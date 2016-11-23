@@ -5,6 +5,7 @@ using Castle.Windsor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smps.Core.Interfaces.Account;
 using Smps.DAL;
+using Smps.Core.BusinessObjects.Account;
 
 namespace SMPS.DAL.Tests.Account
 { 
@@ -42,6 +43,20 @@ namespace SMPS.DAL.Tests.Account
             IUserAccount obj = container.Resolve<IUserAccount>();
             bool profileuser = obj.IsValidUser(user.UserLoginId, user.UserLoginPassword);
             Assert.AreEqual(true, profileuser);
+        }
+
+        [TestMethod]
+        public void GetUserProfile()
+        {
+            User user;
+            using (SMPSEntities objectContext = new SMPSEntities())
+            {
+                IQueryable<User> users = objectContext.Users;
+                user = users.FirstOrDefault();
+            }
+            IUserAccount obj = container.Resolve<IUserAccount>();
+            UserProfile profileuser = obj.GetUserProfile(user.UserLoginId);
+            Assert.AreEqual(true, profileuser!= null);
         }
 
 

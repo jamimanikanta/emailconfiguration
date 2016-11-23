@@ -34,6 +34,11 @@
             url: '/login',
             templateUrl: 'Views/UserAccount/login.html',
             controller: 'loginCtrl'
+        })
+        .state("home", {
+            url: '/home',
+            templateUrl: 'Views/Holder/Holder.html',
+            controller: 'HolderCtrl'
         });
 
     });
@@ -50,7 +55,7 @@
      *   states aka nested states.'localStorageService',,localStorageService
      */
     app.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-        $rootScope.apiURL = "http://localhost/WebApi/api/";
+        $rootScope.apiURL = "http://10.71.12.108/SMPSWebAPI/api/";
     }]);
 })();
 

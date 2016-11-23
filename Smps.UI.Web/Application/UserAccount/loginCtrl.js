@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('SMPSapp').controller("loginCtrl", ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    angular.module('SMPSapp').controller("loginCtrl", ['$scope', '$rootScope', '$http', '$state', function ($scope, $rootScope, $http, $state) {
         $scope.userObject = { userName: "", password: "" };
         $scope.login = function () {
             $scope.errorFlag = false;
@@ -8,7 +8,7 @@
                     {
                         method: 'GET',
                         url: $rootScope.apiURL + "UserAccount/IsUserValid?userId="
-                                + $scope.username + "&password="
+                                + $scope.userName + "&password="
                                 + $scope.password
                     })
                     .then(
