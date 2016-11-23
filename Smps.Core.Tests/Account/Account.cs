@@ -25,7 +25,7 @@ namespace Smps.Core.Tests.Account
         {
             IUserAccount obj = container.Resolve<IUserAccount>();
             
-            bool profileuser = obj.IsValidUser("test","");
+            bool profileuser = obj.IsValidUser("sai_patha@epam.com", "smps123$");
         }
 
         #region IDisposable Support
