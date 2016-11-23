@@ -23,7 +23,7 @@ namespace Smps.DAL.Data.Repositories
                 {
                     IQueryable<User> users = objectContext.Users;
                     var user = users.Where(u => u.UserLoginId == userId).FirstOrDefault();
-                    userProfile = mapProperties(user);
+                    userProfile=mapProperties(user);
                 }
                 return userProfile;
             }
@@ -53,6 +53,18 @@ namespace Smps.DAL.Data.Repositories
                 throw;
             }
 
+        }
+
+        private UserProfile mapProperties(User user)
+        {
+            UserProfile userProfile = null;
+            if (user != null)
+            {
+                userProfile = new UserProfile();
+                userProfile.FirstName = user.FirstName;
+                userProfile.LastName = user.LastName;
+            }
+            return userProfile;
         }
         private UserProfile mapProperties(User user)
         {
