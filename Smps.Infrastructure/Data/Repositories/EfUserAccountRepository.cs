@@ -15,7 +15,22 @@ namespace Smps.DAL.Data.Repositories
     {
         public UserProfile GetUserProfile(string userId)
         {
-            return null;
+            try
+            {
+                UserProfile userProfile;
+                using (SMPSEntities objectContext = new SMPSEntities())
+                {
+                    IQueryable<User> users = objectContext.Users;
+                    var user = users.Where(u => u.UserLoginId == userId).FirstOrDefault();
+                    userProfile=mapProperties(user);
+                }
+                return userProfile;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool IsValidUser(string userId, string password)
@@ -36,6 +51,18 @@ namespace Smps.DAL.Data.Repositories
                 throw;
             }
 
+        }
+
+        private UserProfile mapProperties(User user)
+        {
+            UserProfile userProfile = null;
+            if (user != null)
+            {
+                userProfile = new UserProfile();
+                userProfile.FirstName = user.FirstName;
+                userProfile.LastName = user.LastName;
+            }
+            return userProfile;
         }
     }
 }
