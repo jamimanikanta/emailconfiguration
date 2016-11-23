@@ -28,102 +28,12 @@ var app = angular.module('SMPSapp', ["ui.router"]);
  */
 app.config(function($stateProvider, $urlRouterProvider/*$locationProvider*/) {
 	$urlRouterProvider.otherwise('login');
-	//$stateProvider
-	//.state('registered', {
-	//	url : '/registered',
-	//	views: {
-	//		'': {
-	//			templateUrl : '/CAP/views/cap_registered.html',
-	//			controller : 'registeredCtrl'
-	//		},
-	//		'header@registered': { 
-	//			templateUrl : '/CAP/views/header/header.html',
-	//			controller : 'registeredCtrl'
-	//		},
-	//		'footer@registered':{
-	//			templateUrl: '/CAP/views/footer/footer.html',
-	//			controller : 'registeredCtrl'
-	//		}
-	//	}
-	//})
-	//.state('unregistered', {
-	//	url : '/unregistered',
-	//	views: {
-	//		'': {
-	//			templateUrl : '/CAP/views/cap_unregistered.html',
-	//			controller : 'unregisteredCtrl'
-	//		},
-	//		'header@unregistered': { 
-	//			templateUrl : '/CAP/views/header/header.html',
-	//			controller : 'unregisteredCtrl'
-	//		},
-	//		'footer@unregistered':{
-	//			templateUrl: '/CAP/views/footer/footer.html',
-	//			controller : 'unregisteredCtrl'
-	//		}
-	//	}
-	//})
-	//.state('facilitator', {
-	//	url : '/facilitator',
-	//	views: {
-	//		'': {
-	//			templateUrl : '/CAP/views/cap_facilitator.html',
-	//			controller : 'facilitatorCtrl'
-	//		},
-	//		'header@facilitator': { 
-	//			templateUrl : '/CAP/views/header/header.html',
-	//			controller : 'facilitatorCtrl'
-	//		},
-	//		'navbar@facilitator':{
-	//			templateUrl: '/CAP/views/navbar/navbar.html',
-	//			controller : 'facilitatorCtrl'
-	//		},
-	//		'footer@facilitator':{
-	//			templateUrl: '/CAP/views/footer/footer.html',
-	//			controller : 'facilitatorCtrl'
-	//		}, 
-	//		'home@facilitator':{
-	//			templateUrl:'/CAP/views/facilitator/home.html',
-	//		    controller:'facilitatorCtrl'
-	//		},
-	//		'reg@facilitator':{
-	//			templateUrl: '/CAP/views/facilitator/f_reg.html',
-	//			controller : 'facilitatorCtrl'
-	//		}, 
-	//		'unreg@facilitator':{
-	//			templateUrl: '/CAP/views/facilitator/f_unreg.html',
-	//			controller : 'facilitatorCtrl'
-	//		}, 
-	//		'temp@facilitator':{
-	//			templateUrl: '/CAP/views/facilitator/f_temp.html',
-	//			controller : 'facilitatorCtrl'
-	//		}, 
-	//		'report@facilitator':{
-	//			templateUrl: '/CAP/views/facilitator/f_report.html',
-	//			controller : 'reportCtrl'
-	//		} 
-	//	}
-	//})
 	
 	$stateProvider.state("login", {
 		url : '/login',
 		templateUrl : 'Views/UserAccount/login.html',
 		controller : 'loginCtrl'
 	});
-
-/*
- * it consists of the datepicker used in registered user page
- * helps to select the dates for which the registered user will 
- * vacate the lots for unregistered user
- */
-//app.config(['datepickerConfig', 'datepickerPopupConfig', function(datepickerConfig, datepickerPopupConfig) {
-//	datepickerConfig.startingDay = 0;
-//    datepickerPopupConfig.showButtonBar = false;
-//    datepickerPopupConfig.datepickerPopup = "dd.MM.yyyy";
-//}]);
-//app.config(['growlProvider', function(growlProvider) {
-//	  growlProvider.onlyUniqueMessages(false);
-//	}]);
 
 });
 
@@ -139,21 +49,6 @@ app.config(function($stateProvider, $urlRouterProvider/*$locationProvider*/) {
  *   states aka nested states.'localStorageService',,localStorageService
  */
 app.run([ '$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams) {
-     
-    //$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){  
-    //	if(!localStorageService.get('userObject') && toState.name !== 'login') {
-    //	    $state.go("login");
-    //	    event.preventDefault();
-    //	  }
-    //	else if((localStorageService.get('userObject')!=null) && ((toState.name =='login'))) {
-    //		 $state.go(fromState);
-    //	  }
-    //	else if ((localStorageService.get('userObject')!=null) && ((toState.name !='login'))){
-   	//	 $state.go(fromState);
-   	//  }    	
-
-    //});
     $rootScope.apiURL = "http://localhost/WebApi/api/";
-
 }]);
 
