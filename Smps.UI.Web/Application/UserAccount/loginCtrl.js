@@ -17,7 +17,7 @@
                             $state.go('home');
                         }
                         else {
-                            $scope.message = "Incorrect password or confirmation code entered. Please try again";
+                            $scope.message = "Incorrect email id or password entered. Please try again";
                         }
 
                     }).catch(function (response, status) {
