@@ -25,7 +25,7 @@
           <Property Name="EmpNo" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="MobileNumber" Type="int" />
+          <Property Name="MobileNumber" Type="bigint" />
           <Property Name="UserLoginId" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="UserLoginPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -86,7 +86,7 @@
           <Property Name="EmpNo" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MobileNumber" Type="Int32" />
+          <Property Name="MobileNumber" Type="Int64" />
           <Property Name="UserLoginId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserLoginPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
