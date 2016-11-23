@@ -10,6 +10,7 @@ namespace Smps.DAL.Data.Repositories
     using System.Linq;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account.Repositories;
+    using System.Data.Entity.SqlServer;
 
     public class EfUserAccountRepository : IUserAccountRepository
     {
@@ -20,6 +21,7 @@ namespace Smps.DAL.Data.Repositories
 
         public bool IsValidUser(string userId, string password)
         {
+            
             bool IsValidUser = false;
             try
             {

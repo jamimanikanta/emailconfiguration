@@ -12,7 +12,8 @@ namespace Smps.DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using SqlProviderServices = System.Data.Entity.SqlServer.SqlProviderServices;
+
     public partial class SMPSEntities : DbContext
     {
         public SMPSEntities()
