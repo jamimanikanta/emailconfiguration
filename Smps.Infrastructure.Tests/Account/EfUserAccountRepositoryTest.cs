@@ -6,8 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smps.Core.Interfaces.Account;
 using Smps.DAL;
 
-namespace SMPA.DAL.Tests
-{
+namespace SMPS.DAL.Tests.Account
+{ 
     /// <summary>
     /// Test class for EfUserAccountRepository
     /// </summary>

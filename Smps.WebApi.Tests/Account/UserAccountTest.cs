@@ -7,7 +7,7 @@ using Smps.Core.Interfaces.Account;
 using Smps.DAL;
 using Smps.WebApi.Controllers;
 
-namespace Smps.WebApi.Tests.UserAccountTest
+namespace Smps.WebApi.Tests.Account
 {
     /// <summary>
     /// Test class for UserAccountController
