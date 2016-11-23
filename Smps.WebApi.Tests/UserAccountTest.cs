@@ -1,31 +1,31 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Smps.Core.Services;
-using Smps.DAL.Data;
-using Smps.Core.BusinessObjects.Account;
-using Smps.DAL.Data.Repositories;
-using Smps.Core.Interfaces.Account;
 using Castle.Windsor;
 using Castle.MicroKernel.Registration;
+using Smps.Core.Interfaces.Account;
+using Smps.WebApi.Controllers;
 
-namespace Smps.Core.Tests.Account
+namespace Smps.WebApi.Tests.UserAccountTest
 {
     [TestClass]
-    public class Account  :IDisposable
+    public class UserAccountTest : IDisposable
     {
         WindsorContainer container;
-        public Account()
+        public UserAccountTest()
         {
             container = new WindsorContainer();
             container.Register(Classes.FromAssemblyNamed("Smps.Dal").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
             container.Register(Classes.FromAssemblyNamed("Smps.core").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
         }
         [TestMethod]
-        public void TestProfile()
+        public void IsUserValid()
         {
+            string userId = "1";
+            string password = "test";
             IUserAccount obj = container.Resolve<IUserAccount>();
-            
-            bool profileuser = obj.IsValidUser("sai_patha@epam.com", "smps123$");
+            UserAccountController user = new UserAccountController(obj);
+            bool returnval = user.IsUserValid(userId, password);
+            Assert.AreEqual(false, returnval);
         }
 
         #region IDisposable Support

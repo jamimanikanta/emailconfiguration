@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a4e0d7fb09784424b880f32f6c408b7e" Name="Diagram1">
-        <EntityTypeShape EntityType="SMPSModel.HolderDetail" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SMPSModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="SMPSModel.Fk_HolderDetails_UserId_Users_Id" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SMPSModel.HolderDetail" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="SMPSModel.User" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="SMPSModel.Fk_HolderDetails_UserId_Users_Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
