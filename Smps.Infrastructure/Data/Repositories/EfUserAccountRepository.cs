@@ -21,14 +21,14 @@ namespace Smps.DAL.Data.Repositories
 
         public bool IsValidUser(string userId, string password)
         {
-            
+
             bool IsValidUser = false;
             try
             {
                 using (SMPSEntities objectContext = new SMPSEntities())
                 {
                     IQueryable<User> users = objectContext.Users;
-                    IsValidUser = users.Where(u => u.UserLoginId == userId).Count() > 0;
+                    IsValidUser = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).Count() > 0;
                 }
                 return IsValidUser;
             }
