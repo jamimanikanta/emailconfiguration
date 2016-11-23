@@ -26,6 +26,7 @@ namespace Smps.DAL
         public string LastName { get; set; }
         public Nullable<int> MobileNumber { get; set; }
         public string UserLoginId { get; set; }
+        public string UserLoginPassword { get; set; }
         public string UserType { get; set; }
         public string ParkingSlotNumber { get; set; }
         public string Location { get; set; }

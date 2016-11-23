@@ -16,7 +16,7 @@ namespace Smps.DAL
     {
         public int HolderDetailId { get; set; }
         public Nullable<int> UserID { get; set; }
-        public Nullable<int> ParkingSlotNumber { get; set; }
+        public string ParkingSlotNumber { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime SlotReleasedDate { get; set; }
         public int AllocationType { get; set; }
