@@ -6,10 +6,12 @@
 
 namespace Smps.WebApi.Controllers
 {
-    using System.Web.Http;
-    using Smps.Core.Interfaces.Account;
-    using System.Web.Http.Cors;
     using Core.BusinessObjects.Account;
+    using Smps.Core.Interfaces.Account;
+    using SMPS.CrossCutting.CustomExceptions;
+    using System;
+    using System.Web.Http;
+    using System.Web.Http.Cors;
 
     /// <summary>
     /// This class contains the methods related to user account.
@@ -39,17 +41,43 @@ namespace Smps.WebApi.Controllers
         /// <param name="password">The password</param>
         /// <returns>true or false.</returns>
         [HttpGet]
-        public bool IsUserValid(string userId, string password)
+        public UserProfile ValidateUser(string userId, string password)
         {
-            bool isUserValid = this.obj.IsValidUser(userId, password);
-            return isUserValid;
+            try
+            {
+                UserProfile userProfile = this.obj.ValidateUser(userId, password);
+                return userProfile;
+            }
+            catch (NoDataFoundException)
+            {
+                throw;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpGet]
         public UserProfile GetUserProfile(string userId)
         {
-            UserProfile userProfile = this.obj.GetUserProfile(userId);
-            return userProfile;
+            try
+            {
+                UserProfile userProfile = this.obj.GetUserProfile(userId);
+                return userProfile;
+            }
+            catch (NoDataFoundException)
+            {
+                throw;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

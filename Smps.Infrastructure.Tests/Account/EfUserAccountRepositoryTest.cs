@@ -41,8 +41,8 @@ namespace SMPS.DAL.Tests.Account
                 user = users.FirstOrDefault();
             }
             IUserAccount obj = container.Resolve<IUserAccount>();
-            bool profileuser = obj.IsValidUser(user.UserLoginId, user.UserLoginPassword);
-            Assert.AreEqual(true, profileuser);
+            UserProfile userProfile = obj.ValidateUser(user.UserLoginId, user.UserLoginPassword);
+            Assert.AreEqual(true, userProfile!=null);
         }
 
         [TestMethod]

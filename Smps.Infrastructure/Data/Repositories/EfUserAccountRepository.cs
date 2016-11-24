@@ -10,7 +10,8 @@ namespace Smps.DAL.Data.Repositories
     using System.Linq;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account.Repositories;
-    using System.Data.Entity.SqlServer;
+    using SMPS.CrossCutting.Constants;
+    using SMPS.CrossCutting.CustomExceptions;
 
     public class EfUserAccountRepository : IUserAccountRepository
     {
@@ -23,9 +24,22 @@ namespace Smps.DAL.Data.Repositories
                 {
                     IQueryable<User> users = objectContext.Users;
                     var user = users.Where(u => u.UserLoginId == userId).FirstOrDefault();
-                    userProfile=mapProperties(user);
+                    if (user != null)
+                    {
+                        userProfile = mapProperties(user);
+                    }
+                    else
+                    {
+
+                        throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
+                    }
                 }
                 return userProfile;
+            }
+            catch(NoDataFoundException)
+            {
+                throw;
+
             }
             catch (Exception)
             {
@@ -34,20 +48,28 @@ namespace Smps.DAL.Data.Repositories
             }
         }
 
-        public bool IsValidUser(string userId, string password)
+        public UserProfile ValidateUser(string userId, string password)
         {
 
-            bool IsValidUser = false;
+            UserProfile userProfile = null;
             try
             {
                 using (SMPSEntities objectContext = new SMPSEntities())
                 {
                     IQueryable<User> users = objectContext.Users;
-                    IsValidUser = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).Count() > 0;
+                    var user = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).FirstOrDefault();
+                    if (user != null)
+                    {
+                        userProfile = mapProperties(user);
+                    }
+                    else
+                    {
+                        throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
+                    }
                 }
-                return IsValidUser;
+                return userProfile;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
@@ -55,32 +77,35 @@ namespace Smps.DAL.Data.Repositories
 
         }
 
+        /// <summary>
+        /// Maps the properties between data base object and business object.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         private UserProfile mapProperties(User user)
         {
             UserProfile userProfile = null;
-            if (user != null)
+            try
             {
-                userProfile = new UserProfile();
-                userProfile.FirstName = user.FirstName;
-                userProfile.LastName = user.LastName;
-            }
-            return userProfile;
-        }
-        private UserProfile mapProperties(User user)
-        {
-            UserProfile userProfile = null;
-            if (user != null)
-            {
-                userProfile = new UserProfile();
-                userProfile.FirstName = user.FirstName;
-                userProfile.LastName = user.LastName;
-                if (user.MobileNumber.HasValue)
+                if (user != null)
                 {
-                    userProfile.MobileNumber = user.MobileNumber.Value;
+                    userProfile = new UserProfile();
+                    userProfile.FirstName = user.FirstName;
+                    userProfile.LastName = user.LastName;
                 }
-                
+                else
+                {
+
+                    throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             return userProfile;
         }
+
     }
 }
