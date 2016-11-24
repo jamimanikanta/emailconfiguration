@@ -2,6 +2,7 @@
 // <copyright file="UserAccountController.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the User account controller.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.WebApi.Controllers
