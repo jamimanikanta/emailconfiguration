@@ -27,7 +27,6 @@ namespace Smps.Core.BusinessObjects.Account
         /// <summary>
         /// Gets or sets the mobile number.
         /// </summary>
-<<<<<<< HEAD
         public long? MobileNumber { get; set; }
 
         /// <summary>
@@ -39,9 +38,6 @@ namespace Smps.Core.BusinessObjects.Account
         /// Gets or sets the User type.
         /// </summary>
         public string UserType { get; set; }
-=======
-        /// <value>The mobile number of the customer.</value>
-        public long MobileNumber { get; set; }
->>>>>>> d0d77699bff73393bc872cf0c047d8becd822c47
+
     }
 }
