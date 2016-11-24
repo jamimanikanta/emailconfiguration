@@ -92,6 +92,9 @@ namespace Smps.DAL.Data.Repositories
                     userProfile = new UserProfile();
                     userProfile.FirstName = user.FirstName;
                     userProfile.LastName = user.LastName;
+                    userProfile.MobileNumber = user.MobileNumber;
+                    userProfile.ParkingSlotNumber = user.ParkingSlotNumber;
+                    userProfile.UserType = user.UserType;
                 }
                 else
                 {
