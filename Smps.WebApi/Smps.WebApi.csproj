@@ -181,6 +181,10 @@
       <Project>{e96523fa-7d1a-4e4b-b5a9-126430a44f44}</Project>
       <Name>Smps.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SMPS.CrossCutting\SMPS.CrossCutting.csproj">
+      <Project>{8d215f86-0634-437f-abbe-29d51f5d1a59}</Project>
+      <Name>SMPS.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SMPS.Infrastructure\Smps.Infrastructure.csproj">
       <Project>{4f99aab3-cabb-4da3-8a6b-c127de1dc4c0}</Project>
       <Name>Smps.Infrastructure</Name>

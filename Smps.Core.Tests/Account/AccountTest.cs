@@ -5,7 +5,7 @@ using Castle.Windsor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smps.Core.Interfaces.Account;
 using Smps.DAL;
-
+using Smps.Core.BusinessObjects.Account;
 
 namespace Smps.Core.Tests.Account
 {
@@ -40,9 +40,9 @@ namespace Smps.Core.Tests.Account
                 IQueryable<User> users = objectContext.Users;
                 user = users.FirstOrDefault();
             }
-            IUserAccount obj = container.Resolve<IUserAccount>();            
-            bool profileuser = obj.IsValidUser(user.UserLoginId, user.UserLoginPassword);
-            Assert.AreEqual(true, profileuser);
+            IUserAccount obj = container.Resolve<IUserAccount>();
+            UserProfile userProfile = obj.ValidateUser(user.UserLoginId, user.UserLoginPassword);
+            Assert.AreEqual(true, userProfile!=null);
         }
 
         #region IDisposable Support
