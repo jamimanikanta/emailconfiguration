@@ -34,7 +34,7 @@ namespace Smps.DAL.Data.Repositories
                     var user = users.Where(u => u.UserLoginId == userId).FirstOrDefault();
                     if (user != null)
                     {
-                        userProfile = this.MapProperties(user);
+                        userProfile = MapProperties(user);
                     }
                     else
                     {
@@ -71,7 +71,7 @@ namespace Smps.DAL.Data.Repositories
                     var user = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).FirstOrDefault();
                     if (user != null)
                     {
-                        userProfile = this.MapProperties(user);
+                        userProfile = MapProperties(user);
                     }
                     else
                     {
@@ -92,7 +92,7 @@ namespace Smps.DAL.Data.Repositories
         /// </summary>
         /// <param name="user">The user details.</param>
         /// <returns>The user profile.</returns>
-        private UserProfile MapProperties(User user)
+        private static UserProfile MapProperties(User user)
         {
             UserProfile userProfile = null;
             try
