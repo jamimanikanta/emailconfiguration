@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smps.Core.Interfaces.Account;
 using Smps.DAL;
 using Smps.WebApi.Controllers;
+using Smps.Core.BusinessObjects.Account;
 
 namespace Smps.WebApi.Tests.Account
 {
@@ -41,8 +42,8 @@ namespace Smps.WebApi.Tests.Account
             }
             IUserAccount obj = container.Resolve<IUserAccount>();
             UserAccountController userObj = new UserAccountController(obj);
-            bool returnval = userObj.IsUserValid(user.UserLoginId, user.UserLoginPassword);
-            Assert.AreEqual(true, returnval);
+            UserProfile userProfile = userObj.ValidateUser(user.UserLoginId, user.UserLoginPassword);
+            Assert.AreEqual(true, userProfile != null);
         }
 
         #region IDisposable Support        

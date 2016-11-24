@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SMPS.CrossCutting.CustomExceptions;
 
 namespace Smps.Core.Services
 {
@@ -31,6 +32,11 @@ namespace Smps.Core.Services
             {
                 return this.userAccount.GetUserProfile(userId);
             }
+            catch (NoDataFoundException)
+            {
+                throw;
+
+            }
             catch (Exception)
             {
 
@@ -39,9 +45,22 @@ namespace Smps.Core.Services
 
         }
 
-        public bool IsValidUser(string userId, string password)
+        public UserProfile ValidateUser(string userId, string password)
         {
-            return this.userAccount.IsValidUser(userId, password);
+            try
+            {
+                return this.userAccount.ValidateUser(userId, password);
+            }
+            catch (NoDataFoundException)
+            {
+                throw;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

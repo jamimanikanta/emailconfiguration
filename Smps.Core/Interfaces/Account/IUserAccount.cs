@@ -7,6 +7,6 @@ namespace Smps.Core.Interfaces.Account
     public interface IUserAccount
     {
         UserProfile GetUserProfile(string userId);
-        bool IsValidUser(string userId, string password);
+        UserProfile ValidateUser(string userId, string password);
     }
 }

@@ -76,6 +76,10 @@
     <Compile Include="Account\UserAccountTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SMPS.CrossCutting\SMPS.CrossCutting.csproj">
+      <Project>{8d215f86-0634-437f-abbe-29d51f5d1a59}</Project>
+      <Name>SMPS.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Smps.WebApi\Smps.WebApi.csproj">
       <Project>{1BF1E8A9-8750-410A-BF9C-D2BE2C27CEFC}</Project>
       <Name>Smps.WebApi</Name>
