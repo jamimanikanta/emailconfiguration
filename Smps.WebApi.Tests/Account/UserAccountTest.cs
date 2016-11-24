@@ -1,22 +1,33 @@
-﻿using System;
-using System.Linq;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Smps.Core.Interfaces.Account;
-using Smps.DAL;
-using Smps.WebApi.Controllers;
-using Smps.Core.BusinessObjects.Account;
+﻿/// <summary>
+/// This class contains the test cases for testing the user account details.
+/// </summary>
 
 namespace Smps.WebApi.Tests.Account
 {
+    using System;
+    using System.Linq;
+    using Castle.MicroKernel.Registration;
+    using Castle.Windsor;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Smps.Core.BusinessObjects.Account;
+    using Smps.Core.Interfaces.Account;
+    using Smps.DAL;
+    using Smps.WebApi.Controllers;
+
     /// <summary>
     /// Test class for UserAccountController
     /// </summary>
     [TestClass]
     public class UserAccountTest : IDisposable
     {
+        /// <summary>
+        /// Get or sets true or false.
+        /// </summary>
         private bool disposedValue = false;
+
+        /// <summary>
+        /// The container object.
+        /// </summary>
         WindsorContainer container;
 
         /// <summary>
