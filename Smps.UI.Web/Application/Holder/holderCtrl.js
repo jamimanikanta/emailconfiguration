@@ -6,7 +6,7 @@
         $scope.getProfile = function () {
             $http({
                 method: "GET",
-                url: $rootScope.apiURL + "useraccount/GetUserProfile?userid=" + $scope.userName
+                url: $rootScope.apiURL + "useraccount/GetUserProfile?userid=sai_patha@epam.com" //+ $scope.userName
             }).then(function mySuccess(response) {
                 $scope.userProfile = response.data;
             }, function myError(response) {
