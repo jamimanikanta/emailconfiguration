@@ -8,12 +8,15 @@
     angular.module('SMPSapp')
                .controller('holderCtrl', ['$scope', '$rootScope', '$http', 'userAccountService', holderCtrl]);
 
+    //This controller method instantiation of holder user info i.e holder info for the CRUD operation. 
     function holderCtrl($scope, $rootScope, $http, userAccountService) {
         $scope.isReleased = false;
         $scope.userProfile = userAccountService.userProfile;
         if ($rootScope.userProfile === null || $rootScope.userProfile === 'undefined') {
             $state.go('login');
         }
+
+        // The below method will fetches the user data to populate on the views.
         $scope.getProfile = function () {
             $http({
                 method: 'GET',
@@ -25,6 +28,7 @@
             });
         };
 
+        //This function is relase the slot based on the request
         $scope.releaseSlot = function () {
             $scope.isReleased = true;
             $scope.successMessage = 'Thank you!! your slot release successfully';

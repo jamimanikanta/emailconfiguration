@@ -34,7 +34,7 @@
         .state('home', {
             url: '/home',
             templateUrl: 'Views/Holder/Holder.html',
-            controller: 'HolderCtrl'
+            controller: 'holderCtrl'
         });
     });
 
@@ -52,13 +52,12 @@
     app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state, userAccountService) {
         $rootScope.apiURL = 'http://10.71.12.108/SMPSWebAPI/api/';
         $rootScope.userProfile = {};
-        $rootScope.$on('$stateChangeStart', function (e, toState, toParams
-                                                   , fromState, fromParams) {
+        $rootScope.$on('$stateChangeStart', function (e, toState) {
             var isLogin = toState.name === 'login';
             if (isLogin) {
                 return; 
             }
-            if (userAccountService.userProfile == undefined || Object.getOwnPropertyNames(userAccountService.userProfile).length === 0) {
+            if (userAccountService.userProfile === undefined || Object.getOwnPropertyNames(userAccountService.userProfile).length === 0) {
                 e.preventDefault(); 
                 $state.go('login');  
             }
