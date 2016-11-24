@@ -30,6 +30,14 @@
      * application and not just the route URL.
      */
     app.config(function ($stateProvider, $urlRouterProvider/*$locationProvider*/) {
+        function oAuth($q, userAccountService) {
+            var userInfo = userAccountService.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
         $urlRouterProvider.otherwise('login');
         $stateProvider.state('login', {
             url: '/login',
@@ -39,7 +47,10 @@
         .state('home', {
             url: '/home',
             templateUrl: 'Views/Holder/Holder.html',
-            controller: 'holderCtrl'
+            controller: 'holderCtrl',
+            resolve: {
+                auth: oAuth
+            }
         });
     });
     /*
@@ -55,14 +66,11 @@
      */
     app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state, userAccountService) {
         $rootScope.apiURL = 'http://10.71.12.108/SMPSWebAPI/api/';
-        $rootScope.userProfile = {};
-        $rootScope.$on('$stateChangeStart', function (e, toState) {
-            var isLogin = toState.name === 'login';
-            if (isLogin) {
-                return;
-            }
-            if (userAccountService.userProfile === undefined || Object.getOwnPropertyNames(userAccountService.userProfile).length === 0) {
-                e.preventDefault();
+        $rootScope.$on("$stateChangeSuccess", function (userInfo) {
+            console.log(userInfo);
+        });
+        $rootScope.$on("$stateChangeError", function (event, current, previous, eventObj) {
+            if (eventObj.authenticated === false) {
                 $state.go('login');
             }
         });

@@ -1,5 +1,4 @@
 ﻿//-----------------------------------------------------------------------
-//-----------------------------------------------------------------------
 // <copyright file="holder Controller" company="EPAM">
 //     EPAM copyright @2016.
 //     This application is built during Build-A-Thon and is copy righted to SNL team
@@ -18,26 +17,15 @@
         /* This method calls service to validate the given credntials */
         $scope.login = function () {
             $scope.errorFlag = false;
-            $scope.userObject;
             /* This method calls service to validate the given credntials */
             userAccountService.authenticateUser($scope.userObject)
-            .then(
-                    function (response) {
-                        //Based on the response redirect to the respective screen
-                        if (response.data && response.data !== 'null' && response.data !== 'undefined') {
-                            //Start :  On successful login it will recire to home 
-                            $scope.message = '';
-                            userAccountService.userProfile = response.data;
-                            $state.go('home');
-                            //End : On successful login it will recire to home 
-                        }
-                        else {
-                            $scope.message = 'Incorrect email id or password entered. Please try again';
-                        }
-                    }).catch(function () {
-                        //On Error we have to handle error. 
-                        $scope.message = 'Login Failed: Invalid user';
-                    });
+                .then(function (result) {
+                    $scope.userObject = result;
+                    $state.go('home');
+                }, function (error) {
+                    $scope.message = 'Incorrect email id or password entered. Please try again'
+                    console.log(error);
+                });
         };
     }]);
 })();

@@ -7,24 +7,49 @@
 // should be able to communicate eith web api for crud opration.
 //-----------------------------------------------------------------------
 (function () {
-    angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', userAccountService]);
-
+    angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', '$q', '$window', userAccountService]);
     /* To validate the entred user emailid and password   */
     /* This method calls service to validate the given credntials */
-    function userAccountService($http, $rootScope) {
+    function userAccountService($http, $rootScope, $q, $window) {
         var userProfile;
-        return {
-            userProfile: userProfile,
-            authenticateUser: function (userObject) {
-                return $http(
-                         {
-                             method: 'GET',
-                             url: $rootScope.apiURL + 'UserAccount/ValidateUser?userId='
-                                     + userObject.userName + '&password='
-                                     + userObject.password
-                         });
+        function authenticateUser(userObject) {
+            var deferred = $q.defer();
+            $http(
+                    {
+                        method: 'GET',
+                        url: $rootScope.apiURL + 'UserAccount/ValidateUser?userId='
+                                + userObject.userName + '&password='
+                                + userObject.password
+                    })
+               .then(
+               function (response) {
+                   if (response.data && response.data !== 'null' && response.data !== 'undefined') {
+                       $window.sessionStorage["userInfo"] = JSON.stringify(response.data);
+                       userProfile = response.data;
+                       deferred.resolve(userProfile);
+                   }
+                   else {
+                       deferred.resolve(userProfile);
+                   }
+               }, function (error) {
+
+                   deferred.reject(error);
+               });
+            return deferred.promise;
+        }
+        function getUserInfo() {
+            return userProfile;
+        }
+        function init() {
+            if ($window.sessionStorage["userInfo"]) {
+                userProfile = JSON.parse($window.sessionStorage["userInfo"]);
             }
+        }
+        init();
+        return {
+            authenticateUser: authenticateUser,
+            getUserInfo: getUserInfo
         };
-    };
+    }
 })();
 // End of User Account Service.

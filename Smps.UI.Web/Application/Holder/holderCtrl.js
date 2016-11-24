@@ -13,14 +13,11 @@
 //-----------------------------------------------------------------------
 (function () {
     angular.module('SMPSapp')
-               .controller('holderCtrl', ['$scope', '$rootScope', '$http', 'userAccountService', holderCtrl]);
+               .controller('holderCtrl', ['$scope', '$rootScope', '$http', 'userAccountService', 'auth', holderCtrl]);
     //This controller method instantiation of holder user info i.e holder info for the CRUD operation. 
-    function holderCtrl($scope, $rootScope, $http, userAccountService) {
+    function holderCtrl($scope, $rootScope, $http, userAccountService, auth) {
         $scope.isReleased = false;
-        $scope.userProfile = userAccountService.userProfile;
-        if ($rootScope.userProfile === null || $rootScope.userProfile === 'undefined') {
-            $state.go('login');
-        }
+        $scope.userProfile = auth;
         // The below method will fetches the user data to populate on the views.
         $scope.getProfile = function () {
             $http({
