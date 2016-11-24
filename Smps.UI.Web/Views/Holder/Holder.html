@@ -1,4 +1,40 @@
-﻿<div >
-    FirstName: {{userProfile.firstName}}<br/>
-    LastName: {{userProfile.lastName}}
+﻿<div class="well well-sm text-center">
+    <img src="./Content/images/epam-logo.png" class="img-responsive img-circle center-block" alt="<epam>" />
+    <div class="modal-content" style="margin-top: -17px;">
+        <!-- Begin # DIV Form -->
+        <div class="" id="div-forms">
+            <div class="text-info">
+                <h1>Welcome, {{userProfile.firstName}}</h1>
+            </div>
+            <!-- Begin # Home Form -->
+            <form id="home-form" style="font-size: 16px" class="text-center" ng-submit="releaseSlot()">
+                <div class="modal-body">
+                    <div class="form-group text-center">
+                        <button ng-hide="isReleased" type="submit" class="btn btn-danger btn-lg ">Release my Slot for Today</button>
+                    </div>
+                    <div ng-show="isReleased">{{successMessage}}</div>
+                </div>
+            </form>
+            <!-- End # Home Form -->
+        </div>
+        <!-- End # DIV Form -->
+    </div>
+    <div>
+        <form id="profile-form" style="font-size: 16px">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-group">First Name: {{userProfile.firstName}}</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-group">Last Name: {{userProfile.lastName}}</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-group">Mobile Number: {{userProfile.mobileNumber}}</label>
+                </div>
+                <div class="form-group">
+                    <label class="form-group">User Type: {{userProfile.userType}}</label>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

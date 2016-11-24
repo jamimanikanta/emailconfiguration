@@ -10,9 +10,14 @@
             }).then(function mySuccess(response) {
                 $scope.userProfile = response.data;
             }, function myError(response) {
-                $scope.userProfile = response.statusText;
+                $scope.userProfile = "No data found for specified user";
             });
         }
+        var isReleased = false;
+        $scope.releaseSlot = function () {
 
+            $scope.isReleased = true;
+            $scope.successMessage = "Thank you!! your slot release successfully";
+        }
     }
 }());
