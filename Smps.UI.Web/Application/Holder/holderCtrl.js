@@ -1,6 +1,8 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="holder Controller" company="EPAM">
 //     EPAM copyright @2016.
+//     This application is built during Build-A-Thon and is copy righted to SNL team
+//     This object to be used only in SMPS application started by SNL team, usage in any other project or team to be informed earlier.
 // </copyright>
 //<summary>This is holder controller.</summary>
 //As a Holder, I want to release my parking slot for multiple days
@@ -12,7 +14,6 @@
 (function () {
     angular.module('SMPSapp')
                .controller('holderCtrl', ['$scope', '$rootScope', '$http', 'userAccountService', holderCtrl]);
-
     //This controller method instantiation of holder user info i.e holder info for the CRUD operation. 
     function holderCtrl($scope, $rootScope, $http, userAccountService) {
         $scope.isReleased = false;

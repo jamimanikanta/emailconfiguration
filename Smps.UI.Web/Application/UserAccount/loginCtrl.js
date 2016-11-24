@@ -1,9 +1,12 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Login Controller" company="EPAM">
+//-----------------------------------------------------------------------
+// <copyright file="holder Controller" company="EPAM">
 //     EPAM copyright @2016.
+//     This application is built during Build-A-Thon and is copy righted to SNL team
+//     This object to be used only in SMPS application started by SNL team, usage in any other project or team to be informed earlier.
 // </copyright>
 //<summary>This is login controller.
-//As a User, Login page with organization logo 
+//As a User, Login page with organization logo
 //should be available to access EPAM SMPS application
 //</summary>
 //-----------------------------------------------------------------------

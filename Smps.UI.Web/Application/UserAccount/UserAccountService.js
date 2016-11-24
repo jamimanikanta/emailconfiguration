@@ -1,6 +1,7 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="UserAccountService" company="EPAM">
-//     EPAM copyright .
+﻿// <copyright file="UserAccountService" company="EPAM">
+//     EPAM copyright @2016.
+//     This application is built during Build-A-Thon and is copy righted to SNL team
+//     This object to be used only in SMPS application started by SNL team, usage in any other project or team to be informed earlier.
 // </copyright>
 //<summary>This is the User account Service.</summary>
 // should be able to communicate eith web api for crud opration.

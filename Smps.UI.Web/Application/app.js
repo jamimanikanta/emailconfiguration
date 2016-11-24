@@ -1,5 +1,10 @@
-/*
- * AngularJS is a structural framework for
+//-----------------------------------------------------------------------
+// <copyright file="application javascr" company="EPAM">
+//     EPAM copyright @2016.
+//     This application is built during Build-A-Thon and is copy righted to SNL team
+//     This object to be used only in SMPS application started by SNL team, usage in any other project or team to be informed earlier.
+// </copyright>
+/* AngularJS is a structural framework for
  * dynamic web apps. It lets you use HTML as your
  * template language and lets you extend HTML's syntax
  * to express your application's components clearly and
@@ -8,8 +13,9 @@
  * happens within the browser, making it an ideal partner with
  *  any server technology. */
 /*
- * this is our angular module which have some dependancies 
+ * this is our angular module which have some dependancies
  */
+//-----------------------------------------------------------------------
 (function () {
     var app = angular.module('SMPSapp', ['ui.router']);
     /*
@@ -24,7 +30,6 @@
      * application and not just the route URL.
      */
     app.config(function ($stateProvider, $urlRouterProvider/*$locationProvider*/) {
-
         $urlRouterProvider.otherwise('login');
         $stateProvider.state('login', {
             url: '/login',
@@ -37,7 +42,6 @@
             controller: 'holderCtrl'
         });
     });
-
     /*
      * The new $stateProvider works similar to Angular's v1 router, but it
      * focuses purely on state.
