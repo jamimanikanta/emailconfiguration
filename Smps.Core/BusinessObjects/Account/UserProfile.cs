@@ -27,16 +27,19 @@ namespace Smps.Core.BusinessObjects.Account
         /// <summary>
         /// Gets or sets the mobile number.
         /// </summary>
+        /// <value>The mobile number of the customer.</value>
         public long? MobileNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the Parking slot number.
         /// </summary>
+        /// <value>The parking slot number of the customer.</value>
         public string ParkingSlotNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the User type.
         /// </summary>
+        /// <value>The user type of the customer.</value>
         public string UserType { get; set; }
 
     }

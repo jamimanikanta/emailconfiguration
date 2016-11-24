@@ -2,6 +2,7 @@
 // <copyright file="RouteConfig.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the configuration class.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.WebApi
