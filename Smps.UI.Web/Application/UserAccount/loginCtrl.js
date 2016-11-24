@@ -11,9 +11,13 @@
             userAccountService.authenticateUser($scope.userObject)
             .then(
                     function (response) {
+                        debugger
                         //// To be uncomment if api results the user object $scope.userObject = response.data;
-                        if (response.data == true) {
+                      
+                        if (response.data && response.data !== 'null' && response.data !== 'undefined') {
                             $scope.message = "";
+                            userAccountService.userProfile = response.data;
+                            //localStorage.setItem("userProfile", response.data);
                             $state.go('home');
                         }
                         else {
@@ -21,7 +25,8 @@
                         }
 
                     }).catch(function (response, status) {
-                        $scope.message = "Login Failed.Due to server not responding";
+                        debugger
+                        $scope.message = "Login Failed: Invalid user";
                     });
         };
 

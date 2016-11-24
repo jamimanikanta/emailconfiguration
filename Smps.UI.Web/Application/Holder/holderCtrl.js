@@ -1,8 +1,13 @@
 ﻿(function(){
     angular.module("SMPSapp")
            .controller("HolderCtrl", ['$scope', '$rootScope', '$http', HolderCtrl]);
-
+   
     function HolderCtrl($scope, $rootScope, $http) {
+
+        if ($rootScope.userProfile === null || $rootScope.userProfile === 'undefined') {
+            $state.go('login');
+        }
+
         $scope.getProfile = function () {
             $http({
                 method: "GET",

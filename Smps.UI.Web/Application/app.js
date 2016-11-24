@@ -54,8 +54,25 @@
      *  these commonalities in this model is via the state hierarchy, i.e. parent/child
      *   states aka nested states.'localStorageService',,localStorageService
      */
-    app.run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-        $rootScope.apiURL = "http://10.71.12.108/SMPSWebAPI/api/";
+    app.run(['$rootScope', '$state', '$stateParams', 'userAccountService', function ($rootScope, $state, $stateParams, userAccountService) {
+        //  $rootScope.apiURL = "http://10.71.12.108/SMPSWebAPI/api/";
+        $rootScope.apiURL = "http://localhost:49888/api/";
+        $rootScope.userProfile = {};
+        $rootScope.$on('$stateChangeStart', function (e, toState, toParams
+                                                   , fromState, fromParams) {
+            debugger
+
+            var isLogin = toState.name === 'login';
+            if (isLogin) {
+                return; 
+            }
+
+            if (userAccountService.userProfile == undefined || Object.getOwnPropertyNames(userAccountService.userProfile).length === 0) {
+                e.preventDefault(); 
+                $state.go('login');  
+            }
+        });
+
     }]);
 })();
 
