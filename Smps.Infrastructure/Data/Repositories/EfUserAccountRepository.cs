@@ -2,6 +2,7 @@
 // <copyright file="EfUserAccountRepository.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the User account repository.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.DAL.Data.Repositories
