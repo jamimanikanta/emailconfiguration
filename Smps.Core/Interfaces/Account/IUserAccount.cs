@@ -2,6 +2,7 @@
 // <copyright file="IUserAccount.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the interface for all uer account methods.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.Core.Interfaces.Account

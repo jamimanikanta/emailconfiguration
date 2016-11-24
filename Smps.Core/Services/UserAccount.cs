@@ -2,6 +2,7 @@
 // <copyright file="UserAccount.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the User account class.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.Core.Services
