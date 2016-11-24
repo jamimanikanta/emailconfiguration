@@ -2,6 +2,7 @@
 // <copyright file="BaseController.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the base controller.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.WebApi.Controllers

@@ -15,8 +15,8 @@ namespace Smps.Infrastructure
     public partial class HolderDetail
     {
         public int HolderDetailId { get; set; }
-        public Nullable<int> UserID { get; set; }
-        public string ParkingSlotNumber { get; set; }
+        public Nullable<int> EmpNo { get; set; }
+        public Nullable<int> ParkingSlotNumber { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime SlotReleasedDate { get; set; }
         public int AllocationType { get; set; }

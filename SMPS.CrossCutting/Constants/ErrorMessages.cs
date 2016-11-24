@@ -2,7 +2,7 @@
 // <copyright file="ErrorMessages.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
-//<summary>This is the error messages Class.</summary>
+//<summary>This is the error messages class.</summary>
 //-----------------------------------------------------------------------
 
 namespace SMPS.CrossCutting.Constants

@@ -72,4 +72,7 @@
   <ItemGroup>
     <None Include="Smps.DatabaseProject.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Smps.DatabaseProject.refactorlog" />
+  </ItemGroup>
 </Project>
