@@ -6,13 +6,14 @@
 
 namespace Smps.WebApi.Controllers
 {
+    using System;
+    using System.Web;
+    using System.Web.Http;
+    using System.Web.Http.Cors;
     using Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
     using SMPS.CrossCutting.CustomExceptions;
-    using System;
-    using System.Web.Http;
-    using System.Web.Http.Cors;
-
+    
     /// <summary>
     /// This class contains the methods related to user account.
     /// </summary>
@@ -30,7 +31,6 @@ namespace Smps.WebApi.Controllers
         /// <param name="obj">The user account instance</param>
         public UserAccountController(IUserAccount obj)
         {
-           
             this.obj = obj;
         }
 
@@ -46,20 +46,24 @@ namespace Smps.WebApi.Controllers
             try
             {
                 UserProfile userProfile = this.obj.ValidateUser(userId, password);
+                HttpContext.Current.Session["userDetails"] = userProfile;
                 return userProfile;
             }
             catch (NoDataFoundException)
             {
                 throw;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
+        /// <summary>
+        /// Gets the user profile.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <returns>The user profile.</returns>
         [HttpGet]
         public UserProfile GetUserProfile(string userId)
         {
@@ -71,11 +75,9 @@ namespace Smps.WebApi.Controllers
             catch (NoDataFoundException)
             {
                 throw;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
