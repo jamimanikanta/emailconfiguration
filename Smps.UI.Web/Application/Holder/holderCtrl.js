@@ -3,6 +3,11 @@
 //     EPAM copyright @2016.
 // </copyright>
 //<summary>This is holder controller.</summary>
+//As a Holder, I want to release my parking slot for multiple days
+//so that any seeker who is in need of the parking slot can get the slot for that day.
+//
+//As a Holder/Seeker, I want to search by Car Number / Parking Slot / Mobile Number 
+// So that Car Owner can be reached for emergency
 //-----------------------------------------------------------------------
 (function () {
     angular.module('SMPSapp')
@@ -15,7 +20,6 @@
         if ($rootScope.userProfile === null || $rootScope.userProfile === 'undefined') {
             $state.go('login');
         }
-
         // The below method will fetches the user data to populate on the views.
         $scope.getProfile = function () {
             $http({
@@ -27,7 +31,6 @@
                 $scope.userProfile = 'No data found for specified user';
             });
         };
-
         //This function is relase the slot based on the request
         $scope.releaseSlot = function () {
             $scope.isReleased = true;
@@ -35,3 +38,4 @@
         };
     }
 }());
+// End of holder controller.

@@ -6,7 +6,7 @@
 // should be able to communicate eith web api for crud opration.
 //-----------------------------------------------------------------------
 (function () {
-    angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', userAccountService])
+    angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', userAccountService]);
 
     /* To validate the entred user emailid and password   */
     /* This method calls service to validate the given credntials */
@@ -26,3 +26,4 @@
         };
     };
 })();
+// End of User Account Service.

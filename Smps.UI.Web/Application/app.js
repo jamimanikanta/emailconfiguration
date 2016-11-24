@@ -64,3 +64,4 @@
         });
     }]);
 })();
+// End of the APP JS 
