@@ -15,7 +15,7 @@ namespace Smps.WebApi.Tests.Account
     using Smps.Core.Interfaces.Account;
     using Smps.Infrastructure;
     using Smps.WebApi.Controllers;
-    
+
     /// <summary>
     /// Test class for UserAccountController
     /// </summary>
@@ -86,7 +86,6 @@ namespace Smps.WebApi.Tests.Account
                 this.disposedValue = true;
             }
         }
-        
         #endregion
     }
 }

@@ -47,7 +47,6 @@ namespace Smps.WebApi.Controllers
             try
             {
                 UserProfile userProfile = this.obj.ValidateUser(userId, password);
-                HttpContext.Current.Session["userDetails"] = userProfile;
                 return userProfile;
             }
             catch (NoDataFoundException)

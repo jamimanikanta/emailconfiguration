@@ -10,8 +10,8 @@
             <PropertyRef Name="HolderDetailId" />
           </Key>
           <Property Name="HolderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" />
-          <Property Name="ParkingSlotNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpNo" Type="int" />
+          <Property Name="ParkingSlotNumber" Type="int" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="SlotReleasedDate" Type="datetime" Nullable="false" />
           <Property Name="AllocationType" Type="int" Nullable="false" />
@@ -19,29 +19,29 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="EmpNo" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpNo" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="MobileNumber" Type="bigint" />
-          <Property Name="UserLoginId" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserLoginPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="UserType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ParkingSlotNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="Location" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserLoginId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParkingSlotNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="OperationType" Type="smallint" Nullable="false" />
+          <Property Name="UserLoginPassword" Type="varchar" MaxLength="20" />
         </EntityType>
         <Association Name="Fk_HolderDetails_UserId_Users_Id">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="HolderDetails" Type="Self.HolderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="EmpNo" />
             </Principal>
             <Dependent Role="HolderDetails">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="EmpNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -70,8 +70,8 @@
             <PropertyRef Name="HolderDetailId" />
           </Key>
           <Property Name="HolderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="ParkingSlotNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpNo" Type="Int32" />
+          <Property Name="ParkingSlotNumber" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SlotReleasedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AllocationType" Type="Int32" Nullable="false" />
@@ -80,19 +80,19 @@
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="EmpNo" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmpNo" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MobileNumber" Type="Int64" />
-          <Property Name="UserLoginId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="UserLoginPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ParkingSlotNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Location" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserLoginId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParkingSlotNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="OperationType" Type="Int16" Nullable="false" />
+          <Property Name="UserLoginPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HolderDetails" Relationship="SMPSModel.Fk_HolderDetails_UserId_Users_Id" FromRole="User" ToRole="HolderDetail" />
         </EntityType>
         <Association Name="Fk_HolderDetails_UserId_Users_Id">
@@ -100,10 +100,10 @@
           <End Type="SMPSModel.HolderDetail" Role="HolderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="EmpNo" />
             </Principal>
             <Dependent Role="HolderDetail">
-              <PropertyRef Name="UserID" />
+              <PropertyRef Name="EmpNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -121,7 +121,7 @@
                 <ScalarProperty Name="SlotReleasedDate" ColumnName="SlotReleasedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ParkingSlotNumber" ColumnName="ParkingSlotNumber" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
                 <ScalarProperty Name="HolderDetailId" ColumnName="HolderDetailId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -129,11 +129,11 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="SMPSModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserLoginPassword" ColumnName="UserLoginPassword" />
                 <ScalarProperty Name="OperationType" ColumnName="OperationType" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="ParkingSlotNumber" ColumnName="ParkingSlotNumber" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="UserLoginPassword" ColumnName="UserLoginPassword" />
                 <ScalarProperty Name="UserLoginId" ColumnName="UserLoginId" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

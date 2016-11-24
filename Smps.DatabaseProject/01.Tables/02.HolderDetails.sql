@@ -9,7 +9,7 @@
 
 CREATE TABLE [dbo].[HolderDetails](
 	[HolderDetailId] [int] IDENTITY(1,1) NOT NULL,
-	[UserID] [int] NULL,
+	[EmpNo] [int] NULL,
 	[ParkingSlotNumber] [int] NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[SlotReleasedDate] [datetime] NOT NULL,
@@ -26,7 +26,7 @@ GO
 
 
 
-ALTER TABLE HolderDetails ADD CONSTRAINT Fk_HolderDetails_UserId_Users_Id FOREIGN KEY (UserId) REFERENCES Users(Id)
+ALTER TABLE HolderDetails ADD CONSTRAINT Fk_HolderDetails_UserId_Users_Id FOREIGN KEY ([EmpNo]) REFERENCES Users([EmpNo])
 
 GO
 
