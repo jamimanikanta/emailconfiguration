@@ -13,9 +13,9 @@ namespace Smps.WebApi.Tests.Account
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
-    using Smps.DAL;
+    using Smps.Infrastructure;
     using Smps.WebApi.Controllers;
-
+    
     /// <summary>
     /// Test class for UserAccountController
     /// </summary>

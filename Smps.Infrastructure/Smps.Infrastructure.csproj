@@ -9,8 +9,8 @@
     <ProjectGuid>{4F99AAB3-CABB-4DA3-8A6B-C127DE1DC4C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Smps.DAL</RootNamespace>
-    <AssemblyName>Smps.DAL</AssemblyName>
+    <RootNamespace>Smps.Infrastructure</RootNamespace>
+    <AssemblyName>Smps.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

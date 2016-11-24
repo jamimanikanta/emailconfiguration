@@ -13,7 +13,7 @@ namespace Smps.Core.Tests.Account
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
-    using Smps.DAL;
+    using Smps.Infrastructure;
 
     /// <summary>
     /// Test class for UserAccount

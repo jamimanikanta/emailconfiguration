@@ -5,15 +5,16 @@
 //<summary>This is the User account repository.</summary>
 //-----------------------------------------------------------------------
 
-namespace Smps.DAL.Data.Repositories
+namespace Smps.Infrastructure.Data.Repositories
 {
     using System;
     using System.Linq;
+    using Infrastructure;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account.Repositories;
     using SMPS.CrossCutting.Constants;
     using SMPS.CrossCutting.CustomExceptions;
-    
+
     /// <summary>
     /// This class contains the methods related to user account.
     /// </summary>

@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace SMPS.DAL.Tests.Account
+namespace Smps.Infrastructure.Tests.Account
 {
     using System;
     using System.Linq;
@@ -13,7 +13,7 @@ namespace SMPS.DAL.Tests.Account
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
-    using Smps.DAL;
+    using Smps.Infrastructure;
 
     /// <summary>
     /// Test class for User Account Repository

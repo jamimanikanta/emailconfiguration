@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Smps.DAL
+namespace Smps.Infrastructure
 {
     using System;
     using System.Data.Entity;

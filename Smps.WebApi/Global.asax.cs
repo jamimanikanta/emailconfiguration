@@ -2,6 +2,7 @@
 // <copyright file="Global.asax.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the global asax file.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.WebApi

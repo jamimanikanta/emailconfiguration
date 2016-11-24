@@ -2,6 +2,7 @@
 // <copyright file="NoDataFoundException.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the no data found exception class.</summary>
 //-----------------------------------------------------------------------
 
 namespace SMPS.CrossCutting.CustomExceptions
