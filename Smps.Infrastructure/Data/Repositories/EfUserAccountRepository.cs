@@ -66,21 +66,6 @@ namespace Smps.DAL.Data.Repositories
             }
             return userProfile;
         }
-        private UserProfile mapProperties(User user)
-        {
-            UserProfile userProfile = null;
-            if (user != null)
-            {
-                userProfile = new UserProfile();
-                userProfile.FirstName = user.FirstName;
-                userProfile.LastName = user.LastName;
-                if (user.MobileNumber.HasValue)
-                {
-                    userProfile.MobileNumber = user.MobileNumber.Value;
-                }
-                
-            }
-            return userProfile;
-        }
+
     }
 }
