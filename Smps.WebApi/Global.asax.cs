@@ -46,7 +46,7 @@ namespace Smps.WebApi
         /// Enabling the session state.
         /// </summary>
         /// <param name="sender">The sender</param>
-        /// <param name="e">The event</param>
+        /// <param name="e">The event of the caller</param>
         private static void MvcApplication_PostAuthenticateRequest(object sender, EventArgs e)
         {
             System.Web.HttpContext.Current.SetSessionStateBehavior(
