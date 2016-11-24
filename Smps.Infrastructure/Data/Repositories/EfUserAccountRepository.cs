@@ -2,19 +2,29 @@
 // <copyright file="EfUserAccountRepository.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the User account repository.</summary>
 //-----------------------------------------------------------------------
 
-namespace Smps.DAL.Data.Repositories
+namespace Smps.Infrastructure.Data.Repositories
 {
     using System;
     using System.Linq;
+    using Infrastructure;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account.Repositories;
     using SMPS.CrossCutting.Constants;
     using SMPS.CrossCutting.CustomExceptions;
 
+    /// <summary>
+    /// This class contains the methods related to user account.
+    /// </summary>
     public class EfUserAccountRepository : IUserAccountRepository
     {
+        /// <summary>
+        /// Gets the user profile
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <returns>The user profile.</returns>
         public UserProfile GetUserProfile(string userId)
         {
             try
@@ -26,31 +36,34 @@ namespace Smps.DAL.Data.Repositories
                     var user = users.Where(u => u.UserLoginId == userId).FirstOrDefault();
                     if (user != null)
                     {
-                        userProfile = mapProperties(user);
+                        userProfile = MapProperties(user);
                     }
                     else
                     {
-
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
+
                 return userProfile;
             }
-            catch(NoDataFoundException)
+            catch (NoDataFoundException)
             {
                 throw;
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
+        /// <summary>
+        /// Validates the user and returns profile
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>The user profile.</returns>
         public UserProfile ValidateUser(string userId, string password)
         {
-
             UserProfile userProfile = null;
             try
             {
@@ -60,29 +73,28 @@ namespace Smps.DAL.Data.Repositories
                     var user = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).FirstOrDefault();
                     if (user != null)
                     {
-                        userProfile = mapProperties(user);
+                        userProfile = MapProperties(user);
                     }
                     else
                     {
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
+
                 return userProfile;
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
 
         /// <summary>
         /// Maps the properties between data base object and business object.
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        private UserProfile mapProperties(User user)
+        /// <param name="user">The user details.</param>
+        /// <returns>The user profile.</returns>
+        private static UserProfile MapProperties(User user)
         {
             UserProfile userProfile = null;
             try
@@ -98,17 +110,15 @@ namespace Smps.DAL.Data.Repositories
                 }
                 else
                 {
-
                     throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
+
             return userProfile;
         }
-
     }
 }

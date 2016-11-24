@@ -2,6 +2,7 @@
 // <copyright file="WindsorCompositionRoot.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
+//<summary>This is the castle windsor resolver class.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.WebApi.WindsorCastleResolver

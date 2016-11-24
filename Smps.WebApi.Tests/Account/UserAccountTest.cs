@@ -1,6 +1,8 @@
-﻿/// <summary>
-/// This class contains the test cases for testing the user account details.
-/// </summary>
+﻿//-----------------------------------------------------------------------
+// <copyright file="UserAccountTest.cs" company="CompanyName">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Smps.WebApi.Tests.Account
 {
@@ -11,9 +13,9 @@ namespace Smps.WebApi.Tests.Account
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
-    using Smps.DAL;
+    using Smps.Infrastructure;
     using Smps.WebApi.Controllers;
-
+    
     /// <summary>
     /// Test class for UserAccountController
     /// </summary>
@@ -21,24 +23,25 @@ namespace Smps.WebApi.Tests.Account
     public class UserAccountTest : IDisposable
     {
         /// <summary>
-        /// Get or sets true or false.
+        /// Is disposable or not.
         /// </summary>
         private bool disposedValue = false;
 
         /// <summary>
-        /// The container object.
+        /// The container instance.
         /// </summary>
-        WindsorContainer container;
+        private WindsorContainer container;
 
         /// <summary>
-        /// Register the Assemblies
+        /// Initializes a new instance of the <see cref="UserAccountTest" /> class.
         /// </summary>
         public UserAccountTest()
         {
-            container = new WindsorContainer();
-            container.Register(Classes.FromAssemblyNamed("Smps.Dal").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
-            container.Register(Classes.FromAssemblyNamed("Smps.core").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
+            this.container = new WindsorContainer();
+            this.container.Register(Classes.FromAssemblyNamed("Smps.Infrastructure").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
+            this.container.Register(Classes.FromAssemblyNamed("Smps.core").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
         }
+
         /// <summary>
         /// Method to test whether User is valid or not
         /// </summary>
@@ -51,28 +54,39 @@ namespace Smps.WebApi.Tests.Account
                 IQueryable<User> users = objectContext.Users;
                 user = users.FirstOrDefault();
             }
-            IUserAccount obj = container.Resolve<IUserAccount>();
+
+            IUserAccount obj = this.container.Resolve<IUserAccount>();
             UserAccountController userObj = new UserAccountController(obj);
             UserProfile userProfile = userObj.ValidateUser(user.UserLoginId, user.UserLoginPassword);
             Assert.AreEqual(true, userProfile != null);
         }
 
-        #region IDisposable Support        
+        /// <summary>
+        /// Dispose method.
+        /// </summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+        }
+
+        #region IDisposable Support   
+        /// <summary>
+        /// Disposes the details.
+        /// </summary>
+        /// <param name="disposing">True or false.</param>     
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!this.disposedValue)
             {
                 if (disposing)
                 {
                     this.container.Dispose();
                 }
-                disposedValue = true;
+
+                this.disposedValue = true;
             }
         }
-        public void Dispose()
-        {            
-            Dispose(true);
-        }
+        
         #endregion
     }
 }
