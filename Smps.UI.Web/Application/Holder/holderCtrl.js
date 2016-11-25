@@ -18,6 +18,11 @@
     function holderCtrl($scope, $rootScope, $http, userAccountService, auth) {
         $scope.isReleased = false;
         $scope.userProfile = auth;
+        if ($scope.userProfile.UserType==="Seeker")
+        {
+            $scope.isReleased = true;
+            $scope.seekerMessage = 'Seeker page under construction';
+        }
         // The below method will fetches the user data to populate on the views.
         $scope.getProfile = function () {
             $http({
