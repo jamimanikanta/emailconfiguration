@@ -42,7 +42,7 @@ namespace Smps.WebApi
         {
             //Register the windsor container
             //its assemblies
-            ///Its resolver.
+            //Its resolver.
             GlobalConfiguration.Configure(WebApiConfig.Register);
             WindsorContainer container = new WindsorContainer();
             container.Register(Classes.FromAssemblyNamed("Smps.WebApi").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
