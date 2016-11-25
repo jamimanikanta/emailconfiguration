@@ -43,7 +43,7 @@
         $scope.releaseSlot = function () {
             /*condition to display success message*/
             $scope.isReleased = true;
-            $scope.successMessage = 'Thank you!! your slot release successfully';
+            $scope.successMessage = 'Thank you!! Slot released successfully';
         };
     }
 }());
