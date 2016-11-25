@@ -67,9 +67,8 @@
     app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state, userAccountService) {
         $rootScope.apiURL = 'http://10.71.12.108/SMPSWebAPI/api/';
         $rootScope.$on("$stateChangeSuccess", function (userInfo) {
-            console.log(userInfo);
         });
-        $rootScope.$on("$stateChangeError", function (event, current, previous, eventObj) {
+        $rootScope.$on('$stateChangeError', function (event, current, previous, eventObj) {
             if (eventObj.authenticated === false) {
                 $state.go('login');
             }

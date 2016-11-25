@@ -24,7 +24,6 @@
                     $state.go('home');
                 }, function (error) {
                     $scope.message = 'Incorrect email id or password entered. Please try again'
-                    console.log(error);
                 });
         };
     }]);

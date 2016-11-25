@@ -17,6 +17,9 @@ namespace Smps.Infrastructure.Data.Repositories
 
     /// <summary>
     /// This class contains the methods related to user account.
+    /// This is consumed from core using dependency injection
+    /// Which would be passed from the consumers
+    /// Prefixed this with EF to represent that this is an entity framework class.
     /// </summary>
     public class EfUserAccountRepository : IUserAccountRepository
     {

@@ -4,7 +4,10 @@
 //     This object to be used only in SMPS application started by SNL team, usage in any other project or team to be informed earlier.
 // </copyright>
 //<summary>This is the User account Service.</summary>
-// should be able to communicate eith web api for crud opration.
+//This is implemented using factory pattern.
+//This handles all the crud operations realted to user account like login 
+//Getting the user details.
+//This should be able to communicate eith web api for crud opration.
 //-----------------------------------------------------------------------
 (function () {
     angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', '$q', '$window', userAccountService]);
@@ -24,7 +27,7 @@
                .then(
                function (response) {
                    if (response.data && response.data !== 'null' && response.data !== 'undefined') {
-                       $window.sessionStorage["userInfo"] = JSON.stringify(response.data);
+                       $window.sessionStorage['userInfo'] = JSON.stringify(response.data);
                        userProfile = response.data;
                        deferred.resolve(userProfile);
                    }
@@ -41,8 +44,8 @@
             return userProfile;
         }
         function init() {
-            if ($window.sessionStorage["userInfo"]) {
-                userProfile = JSON.parse($window.sessionStorage["userInfo"]);
+            if ($window.sessionStorage['userInfo']) {
+                userProfile = JSON.parse($window.sessionStorage['userInfo']);
             }
         }
         init();
