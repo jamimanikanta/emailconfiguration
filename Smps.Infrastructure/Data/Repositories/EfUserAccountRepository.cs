@@ -4,6 +4,12 @@
 // </copyright>
 //<summary>This is the User account repository.</summary>
 //This contains all the crud operations related to user account.
+//As a Technical Lead I want to create a solution using N- Tier architecture in visual studio 2015 
+//so that my team can start their development activity	
+//Jira Id-2094
+//This is using repository pattern
+//Which acts as a wrapper over the underlying entity framework
+//To make it persistent ignorant
 //-----------------------------------------------------------------------
 
 namespace Smps.Infrastructure.Data.Repositories
@@ -52,15 +58,18 @@ namespace Smps.Infrastructure.Data.Repositories
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
-                
+
+                //return user profile
                 return userProfile;
             }
             catch (NoDataFoundException)
             {
+                //throw the exception
                 throw;
             }
             catch (Exception)
             {
+                //throw the exception
                 throw;
             }
         }
@@ -83,21 +92,29 @@ namespace Smps.Infrastructure.Data.Repositories
                     IQueryable<User> users = objectContext.Users;
                     //Getting the user model.
                     var user = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).FirstOrDefault();
+                    //Checks if user is not null.
                     if (user != null)
                     {
                         // Getting the user prfile from user model.
+                        //Maps the properties from user model to user profile
+                        //And return the same.
                         userProfile = MapProperties(user);
                     }
                     else
                     {
+                        //throw the exception
+                        //With an error message.
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
 
+                //return user profile
                 return userProfile;
             }
             catch (Exception)
             {
+                //throw the exception
+                //This is a generic exception
                 throw;
             }
         }
@@ -113,6 +130,7 @@ namespace Smps.Infrastructure.Data.Repositories
             UserProfile userProfile = null;
             try
             {
+                //Check for null condition
                 if (user != null)
                 {
                     //Mapping all the properties.
@@ -130,14 +148,18 @@ namespace Smps.Infrastructure.Data.Repositories
                 }
                 else
                 {
+                    //throw the exception
                     throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                 }
             }
             catch (Exception)
             {
+                //throw the exception
+                //This is a generic exception
                 throw;
             }
 
+            //return user profile
             return userProfile;
         }
     }

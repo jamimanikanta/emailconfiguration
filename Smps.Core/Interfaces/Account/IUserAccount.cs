@@ -3,6 +3,9 @@
 //     Company copyright tag.
 // </copyright>
 //<summary>This is the interface for all uer account methods.</summary>
+//As a Technical Lead I want to create a solution using N- Tier architecture in visual studio 2015 
+//so that my team can start their development activity	
+//Jira Id-2094
 //-----------------------------------------------------------------------
 
 namespace Smps.Core.Interfaces.Account

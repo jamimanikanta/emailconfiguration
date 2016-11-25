@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="WebApiConfig.cs" company="CompanyName">
-//     Company copyright tag.
+// <copyright file="WebApiConfig.cs" company="EPAM">
+//     EPAM copyright tag.
 // </copyright>
 //<summary>This is the configuration class.</summary>
 //-----------------------------------------------------------------------
@@ -12,6 +12,7 @@ namespace Smps.WebApi
 
     /// <summary>
     /// This class contains the web config details.
+    /// This is a static class which registers all the required configurations.
     /// </summary>
     public static class WebApiConfig
     {
@@ -21,6 +22,7 @@ namespace Smps.WebApi
         /// <param name="config">The details to register.</param>
         public static void Register(HttpConfiguration config)
         {
+            //Registering all the required configuration
             config.EnableCors(); 
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
