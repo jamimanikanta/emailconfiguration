@@ -52,15 +52,18 @@ namespace Smps.Infrastructure.Data.Repositories
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
-                
+
+                //return user profile
                 return userProfile;
             }
             catch (NoDataFoundException)
             {
+                //throw the exception
                 throw;
             }
             catch (Exception)
             {
+                //throw the exception
                 throw;
             }
         }
@@ -90,14 +93,17 @@ namespace Smps.Infrastructure.Data.Repositories
                     }
                     else
                     {
+                        //throw the exception
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
 
+                //return user profile
                 return userProfile;
             }
             catch (Exception)
             {
+                //throw the exception
                 throw;
             }
         }
@@ -113,6 +119,7 @@ namespace Smps.Infrastructure.Data.Repositories
             UserProfile userProfile = null;
             try
             {
+                //Check for null condition
                 if (user != null)
                 {
                     //Mapping all the properties.
@@ -130,14 +137,17 @@ namespace Smps.Infrastructure.Data.Repositories
                 }
                 else
                 {
+                    //throw the exception
                     throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                 }
             }
             catch (Exception)
             {
+                //throw the exception
                 throw;
             }
 
+            //return user profile
             return userProfile;
         }
     }
