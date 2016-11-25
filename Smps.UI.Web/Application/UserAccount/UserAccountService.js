@@ -13,7 +13,7 @@
     angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', '$q', '$window', userAccountService]);
     /* To validate the entred user emailid and password   */
     /* This method calls service to validate the given credntials */
-	function userAccountService($http, $rootScope, $q, $window) {
+function userAccountService($http, $rootScope, $q, $window) {
         var userProfile;
 		function authenticateUser(userObject) {
             var deferred = $q.defer();
