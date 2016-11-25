@@ -17,7 +17,6 @@
         var userProfile;
         function authenticateUser(userObject) {
             var deferred = $q.defer();
-			/* this service validates the credentials*/
 			/* On success it stores the userprofile information into session */
             $http(
                     {
@@ -30,6 +29,7 @@
                function (response) {
                    if (response.data && response.data !== 'null' && response.data !== 'undefined') {
                        $window.sessionStorage['userInfo'] = JSON.stringify(response.data);
+					   /*The response data is stored into the userProfile variable for subsequent use*/
                        userProfile = response.data;
                        deferred.resolve(userProfile);
                    }
@@ -53,6 +53,7 @@
             }
         }
         init();
+		/*This parameters are being passed over from service*/
         return {
             authenticateUser: authenticateUser,
             getUserInfo: getUserInfo

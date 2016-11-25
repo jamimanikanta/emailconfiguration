@@ -3,6 +3,7 @@
 //     Company copyright tag.
 // </copyright>
 //<summary>This is the User account class.</summary>
+//This contains all the crud operations related to user account.
 //-----------------------------------------------------------------------
 
 namespace Smps.Core.Services
@@ -20,17 +21,22 @@ namespace Smps.Core.Services
     {
         /// <summary>
         /// The object instance.
+        /// Of the user account.
+        /// This would be used across this class.
         /// </summary>
         private IUserAccountRepository userAccount;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserAccount" /> class.
+        /// This is implemented using strategic design pattern.
+        /// This class depends on abstractions.
         /// </summary>
         /// <param name="userAccount">The object instance.</param>
         public UserAccount(IUserAccountRepository userAccount)
         {
             try
             {
+                //Storing the object instance.
                 this.userAccount = userAccount;
             }
             catch (Exception)
@@ -48,6 +54,7 @@ namespace Smps.Core.Services
         {
             try
             {
+                //returning the user profile.
                return this.userAccount.GetUserProfile(userId);
             }
             catch (NoDataFoundException)
@@ -70,6 +77,7 @@ namespace Smps.Core.Services
         {
             try
             {
+                //returning the user profile.
                 return this.userAccount.ValidateUser(userId, password);
             }
             catch (NoDataFoundException)

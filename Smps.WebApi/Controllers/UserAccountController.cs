@@ -28,6 +28,8 @@ namespace Smps.WebApi.Controllers
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserAccountController" /> class.
+        /// The dependencies are injected using castle windsor
+        /// This is implemented using strategic design pattern.
         /// </summary>
         /// <param name="obj">The user account instance</param>
         public UserAccountController(IUserAccount obj)

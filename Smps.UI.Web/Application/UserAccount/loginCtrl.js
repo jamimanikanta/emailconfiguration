@@ -13,7 +13,7 @@
     angular.module('SMPSapp').controller('loginCtrl', ['$scope', '$rootScope', 'userAccountService', '$state', function ($scope, $rootScope, userAccountService, $state) {
         $scope.userObject = { userName: '', password: '' };
         $scope.message = '';
-        /* To validate the entred user emailid and password   */
+        /* To validate the entered user emailid and password   */
         /* This method calls service to validate the given credntials */
         $scope.login = function () {
             $scope.errorFlag = false;
@@ -23,9 +23,8 @@
                     $scope.userObject = result;
                     $state.go('home');
                 }, function (error) {
-                    $scope.message = 'Incorrect email id or password entered. Please try again';
-					console.log(error);
-                });
+                    $scope.message = 'Incorrect email id or password entered. Please try again' + error;
+					});
         };
     }]);
 })();

@@ -117,10 +117,15 @@ namespace Smps.Infrastructure.Data.Repositories
                 {
                     //Mapping all the properties.
                     userProfile = new UserProfile();
+                    //First Name
                     userProfile.FirstName = user.FirstName;
+                    //Last Name
                     userProfile.LastName = user.LastName;
+                    //Mobile Number
                     userProfile.MobileNumber = user.MobileNumber;
+                    //Parking slot number.
                     userProfile.ParkingSlotNumber = user.ParkingSlotNumber;
+                    //User Type.
                     userProfile.UserType = user.UserType;
                 }
                 else
