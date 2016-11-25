@@ -3,6 +3,7 @@
 //     Company copyright tag.
 // </copyright>
 //<summary>This is the User account repository.</summary>
+//This contains all the crud operations related to user account.
 //-----------------------------------------------------------------------
 
 namespace Smps.Infrastructure.Data.Repositories
@@ -32,21 +33,26 @@ namespace Smps.Infrastructure.Data.Repositories
         {
             try
             {
+                //The User Profile Object.
                 UserProfile userProfile;
                 using (SMPSEntities objectContext = new SMPSEntities())
                 {
+                    //Using IQueryable for better performance.
                     IQueryable<User> users = objectContext.Users;
+                    //Getting the user model.
                     var user = users.Where(u => u.UserLoginId == userId).FirstOrDefault();
                     if (user != null)
                     {
+                        //Getting the user prfile from user model.
                         userProfile = MapProperties(user);
                     }
                     else
                     {
+                        //Exception if user not found
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
-
+                
                 return userProfile;
             }
             catch (NoDataFoundException)
@@ -67,15 +73,19 @@ namespace Smps.Infrastructure.Data.Repositories
         /// <returns>The user profile.</returns>
         public UserProfile ValidateUser(string userId, string password)
         {
+            //The User Profile Object.
             UserProfile userProfile = null;
             try
             {
                 using (SMPSEntities objectContext = new SMPSEntities())
                 {
+                    //Using IQueryable for better performance.
                     IQueryable<User> users = objectContext.Users;
+                    //Getting the user model.
                     var user = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).FirstOrDefault();
                     if (user != null)
                     {
+                        // Getting the user prfile from user model.
                         userProfile = MapProperties(user);
                     }
                     else
@@ -99,11 +109,13 @@ namespace Smps.Infrastructure.Data.Repositories
         /// <returns>The user profile.</returns>
         private static UserProfile MapProperties(User user)
         {
+            //The User Profile Object.
             UserProfile userProfile = null;
             try
             {
                 if (user != null)
                 {
+                    //Mapping all the properties.
                     userProfile = new UserProfile();
                     userProfile.FirstName = user.FirstName;
                     userProfile.LastName = user.LastName;
