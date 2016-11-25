@@ -15,9 +15,9 @@
     /* This method calls service to validate the given credntials */
     function userAccountService($http, $rootScope, $q, $window) {
         var userProfile;
+		/* On success it stores the userprofile information into session */
         function authenticateUser(userObject) {
             var deferred = $q.defer();
-			/* On success it stores the userprofile information into session */
             $http(
                     {
                         method: 'GET',

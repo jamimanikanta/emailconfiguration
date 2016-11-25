@@ -22,9 +22,8 @@
                 .then(function (result) {
                     $scope.userObject = result;
                     $state.go('home');
-                }, function (error) {
-                    $scope.message = 'Incorrect email id or password entered. Please try again' + error;
-					});
+                }, function () {
+                    $scope.message = 'Incorrect email id or password entered. Please try again';});
         };
     }]);
 })();
