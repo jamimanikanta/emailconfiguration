@@ -10,8 +10,11 @@
             </a>
             <!-- Begin # Login Form -->
             <form id="login-form" style="font-size:16px" ng-submit="login()">
+                <!-- Begin # Home Form -->
                 <div class="modal-body">
-                    <div class="alert alert-danger" ng-show="((message).length > 0)">{{message}}</div>
+                    <!-- Begin # Home Form -->
+                    <div class="alert alert-danger" ng-show="((message).length > 0)">{{message}}</div><!-- End # DIV Form -->
+                    <!-- Begin # Home Form -->
                     <div class="form-group">
                         <input id="username" class="border-color" name="username"
                                ng-model="userObject.userName"
@@ -20,17 +23,22 @@
                                placeholder="Please Enter Emailid"
                                type="email" />
                     </div>
+                    <!-- End # DIV Form -->
+                    <!-- Begin # Home Form -->
                     <div class="form-group">
                         <input id="password" type="password" name="password" ng-model="userObject.password"
                                maxlength="16" autocomplete="off" required
                                placeholder="Please Enter Password" />
                     </div>
+                    <!-- End # DIV Form -->
                 </div>
+                <!-- Begin # Home Form -->
                 <div class="modal-footer">
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary btn-lg ">Login</button>
                     </div>
                 </div>
+                <!-- End # DIV Form -->
             </form>
             <!-- End # Login Form -->
 

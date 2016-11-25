@@ -3,38 +3,56 @@
     <div class="modal-content" style="margin-top: -17px; height: 153px !important">
         <!-- Begin # DIV Form -->
         <div class="" id="div-forms">
+            <!-- Begin # DIV Form -->
             <div class="text-info">
                 <h1>Welcome, {{userProfile.FirstName}}</h1>
             </div>
+            <!-- End # DIV Form -->
             <!-- Begin # Home Form -->
             <form id="home-form" style="font-size: 16px" class="text-center" ng-submit="releaseSlot()">
+                <!-- Begin # DIV Form -->
                 <div class="modal-body" style="">
+                    <!-- Begin # DIV Form -->
                     <div class="form-group text-center">
                         <button ng-hide="isReleased" type="submit" class="btn btn-danger btn-lg ">Release my Slot for Today</button>
                     </div>
+                    <!-- End # Home Form -->
                     <div ng-show="isReleased">{{successMessage}}</div>
                 </div>
+                <!-- End # Home Form -->
             </form>
             <!-- End # Home Form -->
         </div>
         <!-- End # DIV Form -->
     </div>
+    <!-- Begin # Home Form -->
     <div>
         <form id="profile-form" style="font-size: 16px">
+            <!-- Begin # Home Form -->
             <div class="modal-body">
+                <!-- Begin # Home Form -->
                 <div class="form-group">
                     <label class="form-group">First Name: {{userProfile.FirstName}}</label>
                 </div>
+                <!-- End # DIV Form -->
+                <!-- Begin # Home Form -->
                 <div class="form-group">
                     <label class="form-group">Last Name: {{userProfile.LastName}}</label>
                 </div>
+                <!-- End # DIV Form -->
+                <!-- Begin # Home Form -->
                 <div class="form-group">
                     <label class="form-group">Mobile Number: {{userProfile.MobileNumber}}</label>
                 </div>
+                <!-- End # DIV Form -->
+                <!-- Begin # Home Form -->
                 <div class="form-group">
                     <label class="form-group">User Type: {{userProfile.UserType}}</label>
                 </div>
+                <!-- End # DIV Form -->
             </div>
+            <!-- End # DIV Form -->
         </form>
     </div>
+    <!-- End # DIV Form -->
 </div>
