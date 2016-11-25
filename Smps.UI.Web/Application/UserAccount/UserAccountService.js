@@ -7,17 +7,16 @@
 //This is implemented using factory pattern.
 //This handles all the crud operations realted to user account like login
 //Getting the user details.
-//This should be able to communicate eith web api for crud opration.
+//This should be able to communicate eith web api for crud opration .
 //-----------------------------------------------------------------------
 (function () {
     angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', '$q', '$window', userAccountService]);
     /* To validate the entred user emailid and password   */
     /* This method calls service to validate the given credntials */
-    function userAccountService($http, $rootScope, $q, $window) {
+	function userAccountService($http, $rootScope, $q, $window) {
         var userProfile;
-        function authenticateUser(userObject) {
+		function authenticateUser(userObject) {
             var deferred = $q.defer();
-			/* On success it stores the userprofile information into session */
             $http(
                     {
                         method: 'GET',
