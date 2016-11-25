@@ -11,6 +11,8 @@ namespace Smps.WebApi
 
     /// <summary>
     /// This file contains the filter config details.
+    /// Filters are custom classes that provide both a declarative and programmatic 
+    /// means to add pre-action and post-action behavior to controller action methods.
     /// </summary>
     public class FilterConfig
     {

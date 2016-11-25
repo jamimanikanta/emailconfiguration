@@ -2,14 +2,7 @@
 // <copyright file="RouteConfig.cs" company="CompanyName">
 //     Company copyright tag.
 // </copyright>
-//<summary>
-//This is the configuration class.
-//Route defines the URL pattern and handler information.
-//All the configured routes of an application stored in RouteTable 
-//And will be used by Routing engine to determine appropriate handler class or file for an incoming request.
-//Every MVC application must configure (register) at least one route, 
-//Which is configured by MVC framework by default
-//</summary>
+//<summary>This is the configuration class.</summary>
 //-----------------------------------------------------------------------
 
 namespace Smps.WebApi
@@ -19,6 +12,11 @@ namespace Smps.WebApi
 
     /// <summary>
     /// This class contains the route config details.
+    /// Route defines the URL pattern and handler information.
+    /// All the configured routes of an application stored in RouteTable 
+    /// And will be used by Routing engine to determine appropriate handler class or file for an incoming request.
+    /// Every MVC application must configure (register) at least one route, 
+    /// Which is configured by MVC framework by default
     /// </summary>
     public class RouteConfig
     {
