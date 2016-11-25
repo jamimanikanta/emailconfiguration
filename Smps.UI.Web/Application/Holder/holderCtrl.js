@@ -20,7 +20,7 @@
     function holderCtrl($scope, $rootScope, $http, userAccountService, auth) {
         $scope.isReleased = false;
         $scope.userProfile = auth;
-        if ($scope.userProfile.UserType==="Seeker")
+        if ($scope.userProfile.UserType==='Seeker')
         {
             /*flag to display seeker page info*/
             $scope.isReleased = true;

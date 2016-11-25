@@ -13,9 +13,9 @@
     angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', '$q', '$window', userAccountService]);
     /* To validate the entred user emailid and password   */
     /* This method calls service to validate the given credntials */
-	function userAccountService($http, $rootScope, $q, $window) {
+    function userAccountService($http, $rootScope, $q, $window) {
         var userProfile;
-		function authenticateUser(userObject) {
+        function authenticateUser(userObject) {
             var deferred = $q.defer();
             $http(
                     {
@@ -28,7 +28,7 @@
                function (response) {
                    if (response.data && response.data !== 'null' && response.data !== 'undefined') {
                        $window.sessionStorage['userInfo'] = JSON.stringify(response.data);
-					   /*The response data is stored into the userProfile variable for subsequent use*/
+                       /*The response data is stored into the userProfile variable for subsequent use*/
                        userProfile = response.data;
                        deferred.resolve(userProfile);
                    }
@@ -36,23 +36,23 @@
                        deferred.resolve(userProfile);
                    }
                }, function (error) {
-			   /*On failure it rejects the response with error*/
+                   /*On failure it rejects the response with error*/
                    deferred.reject(error);
                });
             return deferred.promise;
         }
-		/*This method is used to get the user profile information if exists*/
+        /*This method is used to get the user profile information if exists*/
         function getUserInfo() {
             return userProfile;
         }
-		/*This is to intialize the userProfile variable using the session*/
+        /*This is to intialize the userProfile variable using the session*/
         function init() {
             if ($window.sessionStorage['userInfo']) {
                 userProfile = JSON.parse($window.sessionStorage['userInfo']);
             }
         }
         init();
-		/*This parameters are being passed over from service*/
+        /*This parameters are being passed over from service*/
         return {
             authenticateUser: authenticateUser,
             getUserInfo: getUserInfo

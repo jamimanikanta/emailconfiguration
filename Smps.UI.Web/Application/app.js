@@ -69,7 +69,7 @@
         //On State change if errors occers Then the below block will executed
         $rootScope.$on('$stateChangeError', function (event, current, previous, eventObj) {
             if (eventObj.authenticated === false) {
-                // Changing the state from the current page to login page 
+                // Changing the state from the current page to login page
                 $state.go('login');
             }
         });
