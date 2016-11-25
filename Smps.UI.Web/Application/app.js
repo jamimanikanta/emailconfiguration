@@ -24,7 +24,7 @@
      * state.go will take us to the diffrent state
      */
     /*
-     * The UI-Router is a routing framework for AngularJS built by the 
+     * The UI-Router is a routing framework for AngularJS built by the
      * AngularUI team. It provides a different approach than ngRoute in
      * that it changes your application views based on state of the
      * application and not just the route URL.
@@ -64,9 +64,9 @@
      *  these commonalities in this model is via the state hierarchy, i.e. parent/child
      *   states aka nested states.'localStorageService',,localStorageService
      */
-    app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state, userAccountService) {
+    app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state) {
         $rootScope.apiURL = 'http://10.71.12.108/SMPSWebAPI/api/';
-        $rootScope.$on("$stateChangeSuccess", function (userInfo) {
+        $rootScope.$on('$stateChangeSuccess', function () {
         });
         $rootScope.$on('$stateChangeError', function (event, current, previous, eventObj) {
             if (eventObj.authenticated === false) {
@@ -75,4 +75,5 @@
         });
     }]);
 })();
-// End of the APP JS 
+// End of the APP JS
+

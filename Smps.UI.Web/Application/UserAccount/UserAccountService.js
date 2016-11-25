@@ -5,7 +5,7 @@
 // </copyright>
 //<summary>This is the User account Service.</summary>
 //This is implemented using factory pattern.
-//This handles all the crud operations realted to user account like login 
+//This handles all the crud operations realted to user account like login
 //Getting the user details.
 //This should be able to communicate eith web api for crud opration.
 //-----------------------------------------------------------------------
@@ -17,6 +17,8 @@
         var userProfile;
         function authenticateUser(userObject) {
             var deferred = $q.defer();
+			/* this service validates the credentials*/
+			/* On success it stores the userprofile information into session */
             $http(
                     {
                         method: 'GET',
@@ -35,14 +37,16 @@
                        deferred.resolve(userProfile);
                    }
                }, function (error) {
-
+			   /*On failure it rejects the response with error*/
                    deferred.reject(error);
                });
             return deferred.promise;
         }
+		/*This method is used to get the user profile information if exists*/
         function getUserInfo() {
             return userProfile;
         }
+		/*This is to intialize the userProfile variable using the session*/
         function init() {
             if ($window.sessionStorage['userInfo']) {
                 userProfile = JSON.parse($window.sessionStorage['userInfo']);

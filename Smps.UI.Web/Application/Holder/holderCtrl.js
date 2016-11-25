@@ -8,13 +8,13 @@
 //As a Holder, I want to release my parking slot for multiple days
 //so that any seeker who is in need of the parking slot can get the slot for that day.
 //
-//As a Holder/Seeker, I want to search by Car Number / Parking Slot / Mobile Number 
+//As a Holder/Seeker, I want to search by Car Number / Parking Slot / Mobile Number
 // So that Car Owner can be reached for emergency
 //-----------------------------------------------------------------------
 (function () {
     angular.module('SMPSapp')
                .controller('holderCtrl', ['$scope', '$rootScope', '$http', 'userAccountService', 'auth', holderCtrl]);
-    //This controller method instantiation of holder user info i.e holder info for the CRUD operation. 
+    //This controller method instantiation of holder user info i.e holder info for the CRUD operation.
     function holderCtrl($scope, $rootScope, $http, userAccountService, auth) {
         $scope.isReleased = false;
         $scope.userProfile = auth;
