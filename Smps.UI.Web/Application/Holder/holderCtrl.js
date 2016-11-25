@@ -15,15 +15,19 @@
     angular.module('SMPSapp')
                .controller('holderCtrl', ['$scope', '$rootScope', '$http', 'userAccountService', 'auth', holderCtrl]);
     //This controller method instantiation of holder user info i.e holder info for the CRUD operation.
+    /*This controller method instantiation of holder user info i.e holder info for the CRUD operation.*/
+    /*Control method start*/
     function holderCtrl($scope, $rootScope, $http, userAccountService, auth) {
         $scope.isReleased = false;
         $scope.userProfile = auth;
         if ($scope.userProfile.UserType==="Seeker")
         {
+            /*flag to display seeker page info*/
             $scope.isReleased = true;
             $scope.seekerMessage = 'Seeker page under construction';
         }
         // The below method will fetches the user data to populate on the views.
+        /*The below method will fetches the user data to populate on the views.*/
         $scope.getProfile = function () {
             $http({
                 method: 'GET',
@@ -35,10 +39,13 @@
             });
         };
         //This function is relase the slot based on the request
+        /*This function is relase the slot based on the request*/
         $scope.releaseSlot = function () {
+            /*condition to display success message*/
             $scope.isReleased = true;
             $scope.successMessage = 'Thank you!! your slot release successfully';
         };
     }
 }());
 // End of holder controller.
+/*End of holder controller.*/
