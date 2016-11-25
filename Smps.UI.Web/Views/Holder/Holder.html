@@ -24,6 +24,7 @@ The Jira Id is SNLPROJECT-2078
                         <button ng-hide="isReleased" type="submit" class="btn btn-danger btn-lg ">Release my Slot for Today</button>
                     </div>
                     <!-- End # Home Form -->
+                    <!-- Begin # DIV Form for seeker message -->
                     <div class="text-danger" ng-show="isReleased">{{seekerMessage}}</div>
                     <div ng-show="isReleased">{{successMessage}}</div>
                 </div>
@@ -35,6 +36,7 @@ The Jira Id is SNLPROJECT-2078
         <!-- End # DIV Form -->
     </div>
     <div class="row"></div>
+    <!-- Begin # DIV Form for epam sticker (parking slot) -->
     <div ng-hide="isReleased" class="text-center row">
         <div class="col-lg-5"></div>
         <div  class="col-lg-2">
@@ -45,26 +47,32 @@ The Jira Id is SNLPROJECT-2078
         </div>
         <div  class="col-lg-5"></div>
     </div>
+    <!-- #DIV end for parking slot sticker-->
     <!-- Begin # Home Form -->
     <br />
     <div class="row">
         <form id="profile-form" role="form" style="font-size: 16px">
             <!-- Begin # Home Form --><div class="col-lg-4"></div><!-- End # DIV Form -->
             <!-- Begin # Home Form --><div class="center-block">
+                <!--table begins here-->
                 <table class="table table-bordered table-hover table-responsive" style="width: 30%;">
                     <tbody>
+                        <!--Row #1 for Firstname-->
                         <tr>
                             <td class="text-right"><strong>First Name</strong></td>
                             <td class="text-capitalize text-left">{{userProfile.FirstName}}</td>
                         </tr>
+                        <!--Row #2 for Lastname-->
                         <tr>
                             <td class="text-right"><strong>Last Name</strong></td>
                             <td class="text-capitalize text-left">{{userProfile.LastName}}</td>
                         </tr>
+                        <!--Row #3 for Mobile Number-->
                         <tr>
                             <td class="text-right"><strong>Mobile Number</strong></td>
                             <td class="text-capitalize text-left">{{userProfile.MobileNumber}}</td>
                         </tr>
+                        <!--Row #4 for User Type-->
                         <tr>
                             <td class="text-right"><strong>User Type</strong></td>
                             <td class="text-capitalize text-left">{{userProfile.UserType}}</td>
@@ -79,6 +87,7 @@ The Jira Id is SNLPROJECT-2078
 
 </div>
 <style>
+    /*Styling for circle multiline*/
     .circle-multiline {
         display: table-cell;
         height: 160px;
