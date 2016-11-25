@@ -7,7 +7,7 @@
 //This is implemented using factory pattern.
 //This handles all the crud operations realted to user account like login
 //Getting the user details.
-//This should be able to communicate eith web api for crud opration.
+//This should be able to communicate eith web api for crud opration .
 //-----------------------------------------------------------------------
 (function () {
     angular.module('SMPSapp').factory('userAccountService', ['$http', '$rootScope', '$q', '$window', userAccountService]);
