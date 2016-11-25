@@ -37,7 +37,7 @@
         //This function is relase the slot based on the request
         $scope.releaseSlot = function () {
             $scope.isReleased = true;
-            $scope.successMessage = 'Thank you!! your slot release successfully';
+            $scope.successMessage = 'Thank you!! Slot released successfully';
         };
     }
 }());

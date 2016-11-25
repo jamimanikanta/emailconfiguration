@@ -66,10 +66,25 @@
      */
     app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state) {
         $rootScope.apiURL = 'http://10.71.12.108/SMPSWebAPI/api/';
-        $rootScope.$on('$stateChangeSuccess', function () {
+
+        //On State change startsthe below block will executed
+        $rootScope.$on('$stateChangeStart', function (event, toState, eventObj) {
+            // Comparing current state with login. 
+            var isLogin = toState.name === 'login';
+            if (isLogin) {
+                return;
+            }
+            if (eventObj.authenticated === undefined || eventObj.authenticated === false) {
+                event.preventDefault();
+                // Changing the state from the current page to login page 
+                $state.go('login');
+            }
         });
+        
+        //On State change if errors occers Then the below block will executed
         $rootScope.$on('$stateChangeError', function (event, current, previous, eventObj) {
             if (eventObj.authenticated === false) {
+                // Changing the state from the current page to login page 
                 $state.go('login');
             }
         });
