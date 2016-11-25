@@ -30,6 +30,7 @@
      * application and not just the route URL.
      */
     app.config(function ($stateProvider, $urlRouterProvider/*$locationProvider*/) {
+        // Gets the user information from the service.
         function oAuth($q, userAccountService) {
             var userInfo = userAccountService.getUserInfo();
             if (userInfo) {
@@ -67,7 +68,7 @@
     app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state, userAccountService) {
         $rootScope.apiURL = 'http://10.71.12.108/SMPSWebAPI/api/';
         //On State change startsthe below block will executed
-        $rootScope.$on('$stateChangeStart', function (event, toState, eventObj) {
+        $rootScope.$on('$stateChangeStart', function (event, toState) {
             // Comparing current state with login
             var isLogin = toState.name === 'login';
             if (isLogin) {
@@ -76,11 +77,12 @@
             // Comparing userinfo object and on failure
             // this will re-direct to login page
             var userInfo = userAccountService.getUserInfo();
+            // for successful login user info must have some user details
             if (userInfo === undefined) {
                 // stop current execution
                 event.preventDefault();
-                // go to login
-                $state.go('login'); 
+                // State changes to login page
+                $state.go('login');
             }
         });
         //On State change if errors occers Then the below block will executed
