@@ -5,7 +5,7 @@
         <div class="" id="div-forms">
             <!-- Begin # DIV Form -->
             <div class="text-info">
-                <h1>Welcome, {{userProfile.FirstName}}</h1>
+                <h1 class="text-capitalize">Welcome, {{userProfile.FirstName}}</h1>
             </div>
             <!-- End # DIV Form -->
             <!-- Begin # Home Form -->
@@ -28,30 +28,28 @@
     <!-- Begin # Home Form -->
     <div>
         <form id="profile-form" style="font-size: 16px">
-            <!-- Begin # Home Form -->
             <div class="modal-body">
-                <!-- Begin # Home Form -->
-                <div class="form-group">
-                    <label class="form-group">First Name: {{userProfile.FirstName}}</label>
-                </div>
-                <!-- End # DIV Form -->
-                <!-- Begin # Home Form -->
-                <div class="form-group">
-                    <label class="form-group">Last Name: {{userProfile.LastName}}</label>
-                </div>
-                <!-- End # DIV Form -->
-                <!-- Begin # Home Form -->
-                <div class="form-group">
-                    <label class="form-group">Mobile Number: {{userProfile.MobileNumber}}</label>
-                </div>
-                <!-- End # DIV Form -->
-                <!-- Begin # Home Form -->
-                <div class="form-group">
-                    <label class="form-group">User Type: {{userProfile.UserType}}</label>
-                </div>
-                <!-- End # DIV Form -->
+                <table class="table table-bordered table-hover table-responsive">
+                    <tbody>
+                        <tr>
+                            <td class="text-right"><strong>First Name</strong></td>
+                            <td class="text-capitalize text-left">{{userProfile.FirstName}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>Last Name</strong></td>
+                            <td class="text-capitalize text-left">{{userProfile.LastName}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>Mobile Number</strong></td>
+                            <td class="text-capitalize text-left">{{userProfile.MobileNumber}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><strong>User Type</strong></td>
+                            <td class="text-capitalize text-left"><mark>{{userProfile.UserType}}</mark></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- End # DIV Form -->
         </form>
     </div>
     <!-- End # DIV Form -->
