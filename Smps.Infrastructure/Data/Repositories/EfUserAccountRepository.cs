@@ -4,6 +4,12 @@
 // </copyright>
 //<summary>This is the User account repository.</summary>
 //This contains all the crud operations related to user account.
+//As a Technical Lead I want to create a solution using N- Tier architecture in visual studio 2015 
+//so that my team can start their development activity	
+//Jira Id-2094
+//This is using repository pattern
+//Which acts as a wrapper over the underlying entity framework
+//To make it persistent ignorant
 //-----------------------------------------------------------------------
 
 namespace Smps.Infrastructure.Data.Repositories
@@ -86,14 +92,18 @@ namespace Smps.Infrastructure.Data.Repositories
                     IQueryable<User> users = objectContext.Users;
                     //Getting the user model.
                     var user = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).FirstOrDefault();
+                    //Checks if user is not null.
                     if (user != null)
                     {
                         // Getting the user prfile from user model.
+                        //Maps the properties from user model to user profile
+                        //And return the same.
                         userProfile = MapProperties(user);
                     }
                     else
                     {
                         //throw the exception
+                        //With an error message.
                         throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
                     }
                 }
@@ -104,6 +114,7 @@ namespace Smps.Infrastructure.Data.Repositories
             catch (Exception)
             {
                 //throw the exception
+                //This is a generic exception
                 throw;
             }
         }
@@ -144,6 +155,7 @@ namespace Smps.Infrastructure.Data.Repositories
             catch (Exception)
             {
                 //throw the exception
+                //This is a generic exception
                 throw;
             }
 
