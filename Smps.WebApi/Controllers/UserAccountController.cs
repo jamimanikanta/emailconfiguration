@@ -17,8 +17,11 @@ namespace Smps.WebApi.Controllers
     using Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
     using SMPS.CrossCutting.CustomExceptions;
-    
+
     /// <summary>
+    /// As a Technical Lead I want to create a solution using N- Tier architecture in visual studio 2015 
+    ///so that my team can start their development activity	
+    ///Jira Id-2094
     /// This class contains the methods related to user account.
     /// Angular code invokes this method.
     /// For getting the user account details.

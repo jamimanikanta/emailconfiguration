@@ -11,6 +11,8 @@ namespace Smps.WebApi
 
     /// <summary>
     /// This class contains the bundle config details.
+    /// Bundling and minification are two techniques you can use in ASP.NET 4.5 to improve request load time.  
+    /// Bundling and minification improves load time by reducing the number of requests to the server and reducing the size of requested assets (such as CSS and JavaScript.)
     /// </summary>
     public class BundleConfig
     {
