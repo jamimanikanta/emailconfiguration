@@ -3,6 +3,9 @@
 //     Company copyright tag.
 // </copyright>
 //<summary>This is the User account controller.</summary>
+//As a Technical Lead I want to create a solution using N- Tier architecture in visual studio 2015 
+//so that my team can start their development activity	
+//Jira Id-2094
 //-----------------------------------------------------------------------
 
 namespace Smps.WebApi.Controllers
@@ -17,12 +20,15 @@ namespace Smps.WebApi.Controllers
     
     /// <summary>
     /// This class contains the methods related to user account.
+    /// Angular code invokes this method.
+    /// For getting the user account details.
     /// </summary>
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserAccountController : BaseController
     {
         /// <summary>
         /// The user account object.
+        //  This is used across this class.
         /// </summary>
         private IUserAccount obj;
 
@@ -34,6 +40,7 @@ namespace Smps.WebApi.Controllers
         /// <param name="obj">The user account instance</param>
         public UserAccountController(IUserAccount obj)
         {
+            //Assigning the object.
             this.obj = obj;
         }
 
@@ -48,15 +55,18 @@ namespace Smps.WebApi.Controllers
         {
             try
             {
+                //Getting user profile.
                 UserProfile userProfile = this.obj.ValidateUser(userId, password);
                 return userProfile;
             }
             catch (NoDataFoundException)
             {
+                //throw the exception
                 throw;
             }
             catch (Exception)
             {
+                //throw the exception
                 throw;
             }
         }
@@ -71,15 +81,18 @@ namespace Smps.WebApi.Controllers
         {
             try
             {
+                //Getting user profile.
                 UserProfile userProfile = this.obj.GetUserProfile(userId);
                 return userProfile;
             }
             catch (NoDataFoundException)
             {
+                //throw the exception
                 throw;
             }
             catch (Exception)
             {
+                //throw the exception
                 throw;
             }
         }
