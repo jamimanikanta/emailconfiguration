@@ -1,5 +1,5 @@
 ﻿describe("Login Controller Test", function () {
-    var controller, UsersController,scope,$rootscope,$http;
+    var controller, UsersController,scope,$rootscope;
 
     //// Load our api.users module
     beforeEach(module('SMPSapp','ui.router'));
@@ -9,18 +9,13 @@
         scope = $rootScope.$new();
         $rootscope = $rootScope;
         userAccountService = userAccountService;
-
         controller = _$controller_;
-       
-
         UsersController = controller('loginCtrl', { $scope: scope, $rootScope: $rootScope, userAccountService: userAccountService });
-        
     }));
 
     it("Validate Login", function () {
         scope.login();
        ////expect(scope.Text).toBe("Hello");
         expect(scope.errorFlag).toBe(true);
-      
     });
 });
