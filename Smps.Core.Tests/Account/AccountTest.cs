@@ -14,77 +14,56 @@ namespace Smps.Core.Tests.Account
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
     using Smps.Infrastructure;
+    using Moq;
+    using Interfaces.Account.Repositories;
+    using Services;
 
     /// <summary>
     /// Test class for UserAccount
     /// </summary>
     [TestClass]
-    public class AccountTest : IDisposable
+    public class AccountTest 
     {
-        /// <summary>
-        /// Is disposable or not.
-        /// </summary>
-        private bool disposedValue = false;
+        public UserProfile userProfile { get; set; }
 
-        /// <summary>
-        /// The container instance.
-        /// </summary>
-        private WindsorContainer container;
+        private Mock<IUserAccountRepository> mockRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountTest" /> class.
         /// </summary>
         public AccountTest()
         {
-            this.container = new WindsorContainer();
-            this.container.Register(Classes.FromAssemblyNamed("Smps.Infrastructure").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
-            this.container.Register(Classes.FromAssemblyNamed("Smps.core").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
+            mockRepository = new Mock<IUserAccountRepository>();
+            userProfile = new UserProfile() { FirstName = "venkatesh", LastName = "pydi" };
         }
 
-        /// <summary>
-        /// Method to test whether user is valid or not
-        /// </summary>
         [TestMethod]
-        public void IsValidUser()
+        public void ValidateUser_forvalidentries()
         {
-            User user;
-            using (SMPSEntities objectContext = new SMPSEntities())
-            {
-                IQueryable<User> users = objectContext.Users;
-                user = users.FirstOrDefault();
-            }
+            ////Arange  
+            var objUserAccount = new UserAccount(mockRepository.Object);
+            mockRepository.Setup(u => u.ValidateUser(It.IsAny<string>(), It.IsAny<string>())).Returns(userProfile);
+            string userName = "venkatesh", password = "pydi";
+            //Act
+            var result = objUserAccount.ValidateUser(userName, password);
 
-            IUserAccount obj = this.container.Resolve<IUserAccount>();
-            UserProfile userProfile = obj.ValidateUser(user.UserLoginId, user.UserLoginPassword);
-            Assert.AreEqual(true, userProfile != null);
+            //Assert
+            Assert.AreEqual(result.FirstName, "venkatesh");
         }
 
-        /// <summary>
-        /// Dispose method.
-        /// </summary>
-        public void Dispose()
+        [TestMethod]
+        public void GetUserProfile_By_UserName_ForValidUserName()
         {
-            this.Dispose(true);
+            //Arrange
+            var objUserAccount = new UserAccount(mockRepository.Object);
+            mockRepository.Setup(u => u.GetUserProfile(It.IsAny<string>())).Returns(userProfile);
+
+            //Act
+            var result = objUserAccount.GetUserProfile("venkatesh");
+
+            //Assert
+            Assert.AreEqual(result.LastName, "pydi");
+
         }
-
-        #region IDisposable Support
-        /// <summary>
-        /// Disposes the details.
-        /// </summary>
-        /// <param name="disposing">True or false.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposedValue)
-            {
-                if (disposing)
-                {
-                    this.container.Dispose();
-                }
-
-                this.disposedValue = true;
-            }
-        }
-
-        #endregion
     }
 }
