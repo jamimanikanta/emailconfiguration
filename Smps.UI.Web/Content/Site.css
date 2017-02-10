@@ -22,3 +22,68 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.login-container {
+    background-color: #f0f0f0;
+    color: #464547;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    bottom: 60px;
+    right: 0;
+    min-height: auto;
+    line-height: 20px;
+}
+
+
+
+.login-container .login-content {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    z-index: 10;
+}
+
+   
+
+
+
+#innerContainer > p {
+    background-color: #1a9cb0;
+    color: #FFF;
+    filter: alpha(opacity=100);
+    font-family: Oswald;
+    font-size: 18px;
+    letter-spacing: 0.35px;
+    line-height: 50px;
+    opacity: 1;
+    margin: 0;
+    text-align: left;
+    padding-left: 30px;
+    vertical-align: middle;
+    /* border: 0; */
+}
+
+#innerContainer {
+    background-color: #1a9cb0;
+    height: inherit;
+    width: 460px;
+    left: -1px;
+    border: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+#login-form {
+    background-color: white;  
+    padding-bottom: 40px;  
+}
+
+
+ #login-form .form-field {
+ margin : 10px 0px 10px 10px;
+}
+
+
