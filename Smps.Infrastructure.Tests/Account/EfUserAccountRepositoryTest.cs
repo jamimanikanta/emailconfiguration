@@ -64,7 +64,7 @@ namespace Smps.Infrastructure.Tests.Account
             
 
             ////Arange  
-            var objUserAccount = new EfUserAccountRepository(mockContext.Object);
+            var objUserAccount = new EfUserAccountRepository();
             //var mockSet = new Mock<DbSet<User>>();
             //mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(userProfile.Provider);
             //mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(userProfile.Expression);
