@@ -14,94 +14,84 @@ namespace Smps.Infrastructure.Tests.Account
     using Smps.Core.BusinessObjects.Account;
     using Smps.Core.Interfaces.Account;
     using Smps.Infrastructure;
+    using Moq;
+    using Core.Interfaces.Account.Repositories;
+    using Smps.Infrastructure.Data.Repositories;
+    using System.Collections.Generic;
+    using System.Data.Entity;
 
     /// <summary>
     /// Test class for User Account Repository
     /// </summary>
     [TestClass]
-    public class EfUserAccountRepositoryTest : IDisposable
+    public class EfUserAccountRepositoryTest
     {
-        /// <summary>
-        /// Is disposable or not.
-        /// </summary>
-        private bool disposedValue = false;
+        public IQueryable<User> userProfile { get; set; }
 
-        /// <summary>
-        /// The container instance.
-        /// </summary>
-        private WindsorContainer container;
-
+        private Mock<SMPSEntities> mockContext;
         /// <summary>
         /// Initializes a new instance of the <see cref="EfUserAccountRepositoryTest" /> class.
         /// </summary>
         public EfUserAccountRepositoryTest()
         {
-            this.container = new WindsorContainer();
-            this.container.Register(Classes.FromAssemblyNamed("Smps.Infrastructure").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
-            this.container.Register(Classes.FromAssemblyNamed("Smps.core").Where(type => type.IsPublic).WithService.DefaultInterfaces().LifestyleTransient());
+            //var mockSet = new Mock<DbSet<User>>();
+            //mockSet.Object.Add(new User { FirstName = "Venkatesh", UserLoginId = "venkatesh", UserLoginPassword = "pydi" });
+            //mockContext = new Mock<SMPSEntities>();
+            //mockContext.Setup(m => m.Users).Returns(mockSet.Object);
+            //// userProfile = new User() { FirstName = "venkatesh", LastName = "pydi" };
+
+            userProfile = new List<User>
+            {
+                new User { FirstName = "Venkatesh",UserLoginId="venkatesh", UserLoginPassword="pydi" }
+            }.AsQueryable();
+
+
         }
 
-        /// <summary>
-        /// Method to test whether user is valid or not
-        /// </summary>
         [TestMethod]
-        public void CheckValidUser()
+        public void ValidateUser_forvalidentries()
         {
-            User user;
-            using (SMPSEntities objectContext = new SMPSEntities())
-            {
-                IQueryable<User> users = objectContext.Users;
-                user = users.FirstOrDefault();
-            }
+            var mockSet = new Mock<DbSet<User>>();
+           // mockSet.Object.Add(new User { FirstName = "Venkatesh", UserLoginId = "venkatesh", UserLoginPassword = "pydi" });
+            mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(userProfile.Provider);
+            mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(userProfile.Expression);
+            mockSet.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(userProfile.ElementType);
+            mockSet.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(userProfile.GetEnumerator());
 
-            IUserAccount obj = this.container.Resolve<IUserAccount>();
-            UserProfile userProfile = obj.ValidateUser(user.UserLoginId, user.UserLoginPassword);
-            Assert.AreEqual(true, userProfile != null);
+            var mockContext = new Mock<SMPSEntities>();
+            mockContext.Setup(c => c.Users).Returns(mockSet.Object);
+            mockContext.Object.Users.Add(new User { FirstName = "Venkatesh", UserLoginId = "venkatesh", UserLoginPassword = "pydi" });
+            
+
+            ////Arange  
+            var objUserAccount = new EfUserAccountRepository(mockContext.Object);
+            //var mockSet = new Mock<DbSet<User>>();
+            //mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(userProfile.Provider);
+            //mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(userProfile.Expression);
+            //mockSet.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(userProfile.ElementType);
+            //mockSet.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(userProfile.GetEnumerator());
+
+            string userName = "venkatesh", password = "pydi";
+            //Act
+            var result = objUserAccount.ValidateUser(userName, password);
+
+            //Assert
+            Assert.AreEqual(result.FirstName, "venkatesh");
         }
 
-        /// <summary>
-        /// Tests the user profile method.
-        /// </summary>
-        [TestMethod]
-        public void GetUserProfile()
-        {
-            User user;
-            using (SMPSEntities objectContext = new SMPSEntities())
-            {
-                IQueryable<User> users = objectContext.Users;
-                user = users.FirstOrDefault();
-            }
+        //[TestMethod]
+        //public void GetUserProfile_By_UserName_ForValidUserName()
+        //{
+        //    ////Arrange
+        //    //var objUserAccount = new EfUserAccountRepository();
+        //    //mockRepository.Setup(u => u.GetUserProfile(It.IsAny<string>())).Returns(userProfile);
 
-            IUserAccount obj = this.container.Resolve<IUserAccount>();
-            UserProfile profileuser = obj.GetUserProfile(user.UserLoginId);
-            Assert.AreEqual(true, profileuser != null);
-        }
+        //    ////Act
+        //    //var result = objUserAccount.GetUserProfile("venkatesh");
 
-        /// <summary>
-        /// Dispose method.
-        /// </summary>
-        public void Dispose()
-        {
-            this.Dispose(true);
-        }
+        //    ////Assert
+        //    //Assert.AreEqual(result.LastName, "pydi");
 
-        #region IDisposable Support   
-        /// <summary>
-        /// Disposes the details.
-        /// </summary>
-        /// <param name="disposing">True or false.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposedValue)
-            {
-                if (disposing)
-                {
-                    this.container.Dispose();
-                }
-
-                this.disposedValue = true;
-            }
-        }
-        #endregion
+        //}
     }
 }
