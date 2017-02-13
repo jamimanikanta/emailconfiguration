@@ -48,36 +48,36 @@ namespace Smps.Infrastructure.Tests.Account
 
         }
 
-        [TestMethod]
-        public void ValidateUser_forvalidentries()
-        {
-            var mockSet = new Mock<DbSet<User>>();
-           // mockSet.Object.Add(new User { FirstName = "Venkatesh", UserLoginId = "venkatesh", UserLoginPassword = "pydi" });
-            mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(userProfile.Provider);
-            mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(userProfile.Expression);
-            mockSet.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(userProfile.ElementType);
-            mockSet.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(userProfile.GetEnumerator());
+        //////[TestMethod]
+        //////public void ValidateUser_forvalidentries()
+        //////{
+        //////    var mockSet = new Mock<DbSet<User>>();
+        //////   // mockSet.Object.Add(new User { FirstName = "Venkatesh", UserLoginId = "venkatesh", UserLoginPassword = "pydi" });
+        //////    mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(userProfile.Provider);
+        //////    mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(userProfile.Expression);
+        //////    mockSet.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(userProfile.ElementType);
+        //////    mockSet.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(userProfile.GetEnumerator());
 
-            var mockContext = new Mock<SMPSEntities>();
-            mockContext.Setup(c => c.Users).Returns(mockSet.Object);
-            mockContext.Object.Users.Add(new User { FirstName = "Venkatesh", UserLoginId = "venkatesh", UserLoginPassword = "pydi" });
+        //////    var mockContext = new Mock<SMPSEntities>();
+        //////    mockContext.Setup(c => c.Users).Returns(mockSet.Object);
+        //////    mockContext.Object.Users.Add(new User { FirstName = "Venkatesh", UserLoginId = "venkatesh", UserLoginPassword = "pydi" });
             
 
-            ////Arange  
-            var objUserAccount = new EfUserAccountRepository();
-            //var mockSet = new Mock<DbSet<User>>();
-            //mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(userProfile.Provider);
-            //mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(userProfile.Expression);
-            //mockSet.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(userProfile.ElementType);
-            //mockSet.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(userProfile.GetEnumerator());
+        //////    ////Arange  
+        //////    var objUserAccount = new EfUserAccountRepository();
+        //////    //var mockSet = new Mock<DbSet<User>>();
+        //////    //mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(userProfile.Provider);
+        //////    //mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(userProfile.Expression);
+        //////    //mockSet.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(userProfile.ElementType);
+        //////    //mockSet.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(userProfile.GetEnumerator());
 
-            string userName = "venkatesh", password = "pydi";
-            //Act
-            ////var result = objUserAccount.ValidateUser(userName, password);
+        //////    string userName = "venkatesh", password = "pydi";
+        //////    //Act
+        //////    var result = objUserAccount.ValidateUser(userName, password);
 
-            //Assert
-            Assert.AreEqual("venkatesh", "venkatesh");
-        }
+        //////    //Assert
+        //////    Assert.AreEqual(result.FirstName, "venkatesh");
+        //////}
 
         //[TestMethod]
         //public void GetUserProfile_By_UserName_ForValidUserName()
