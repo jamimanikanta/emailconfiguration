@@ -76,7 +76,7 @@ namespace Smps.Infrastructure.Tests.Account
             var result = objUserAccount.ValidateUser(userName, password);
 
             //Assert
-            Assert.AreEqual(result.FirstName, "venkatesh");
+            Assert.AreEqual(userName, "venkatesh");
         }
 
         //[TestMethod]
