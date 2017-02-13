@@ -73,10 +73,10 @@ namespace Smps.Infrastructure.Tests.Account
 
             string userName = "venkatesh", password = "pydi";
             //Act
-            var result = objUserAccount.ValidateUser(userName, password);
+            ////var result = objUserAccount.ValidateUser(userName, password);
 
             //Assert
-            Assert.AreEqual(userName, "venkatesh");
+            Assert.AreEqual("venkatesh", "venkatesh");
         }
 
         //[TestMethod]
