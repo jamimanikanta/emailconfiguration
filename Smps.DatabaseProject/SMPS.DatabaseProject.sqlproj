@@ -75,4 +75,7 @@
   <ItemGroup>
     <RefactorLog Include="Smps.DatabaseProject.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="05.Data\Script.PostDeployment.sql" />
+  </ItemGroup>
 </Project>
