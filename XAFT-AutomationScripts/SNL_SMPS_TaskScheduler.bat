@@ -7,7 +7,7 @@ set mysql_schema=snl_testing
 
 rem Setup TaskScheduler folder configuration
 
-set schedule_tasks_dir="%Workspace%\XAFT-AutomationScripts"
+set schedule_tasks_dir="D:\GitPctRepo\XAFT-AutomationScripts"
 set file1="SNL_SMPS_SQLfile.sql"
 
 rem Scheduling the tasks from MySQL database

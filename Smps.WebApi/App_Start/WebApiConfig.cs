@@ -23,7 +23,8 @@ namespace Smps.WebApi
         public static void Register(HttpConfiguration config)
         {
             //Registering all the required configuration
-            config.EnableCors(); 
+            var cors = new System.Web.Http.Cors.EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors); 
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

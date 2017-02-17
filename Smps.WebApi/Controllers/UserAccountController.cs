@@ -26,7 +26,6 @@ namespace Smps.WebApi.Controllers
     /// Angular code invokes this method.
     /// For getting the user account details.
     /// </summary>
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserAccountController : BaseController
     {
         /// <summary>
