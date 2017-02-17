@@ -66,7 +66,7 @@
      *   states aka nested states.'localStorageService',,localStorageService
      */
     app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state, userAccountService) {
-        $rootScope.apiURL = 'http://10.71.12.108/SMPSWebAPI/api/';
+        $rootScope.apiURL = 'http://localhost/SMPS.WebAPI/api/';
         //On State change startsthe below block will executed
         $rootScope.$on('$stateChangeStart', function (event, toState) {
             // Comparing current state with login
