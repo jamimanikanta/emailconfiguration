@@ -17,7 +17,7 @@ namespace SMPS.CrossCutting.CustomExceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="NoDataFoundException" /> class.
         /// </summary>
-        public NoDataFoundException() : base()
+        public NoDataFoundException()
         {
         }
 

@@ -14,11 +14,11 @@
 
 namespace Smps.Infrastructure.Data.Repositories
 {
-    using System;
+    
     using System.Linq;
     using Infrastructure;
-    using Smps.Core.BusinessObjects.Account;
-    using Smps.Core.Interfaces.Account.Repositories;
+    using Core.BusinessObjects.Account;
+    using Core.Interfaces.Account.Repositories;
     using SMPS.CrossCutting.Constants;
     using SMPS.CrossCutting.CustomExceptions;
 
@@ -37,41 +37,28 @@ namespace Smps.Infrastructure.Data.Repositories
         /// <returns>The user profile.</returns>
         public UserProfile GetUserProfile(string userId)
         {
-            try
+            //The User Profile Object.
+            UserProfile userProfile;
+            using (SMPSEntities objectContext = new SMPSEntities())
             {
-                //The User Profile Object.
-                UserProfile userProfile;
-                using (SMPSEntities objectContext = new SMPSEntities())
+                //Using IQueryable for better performance.
+                IQueryable<User> users = objectContext.Users;
+                //Getting the user model.
+                var user = users.FirstOrDefault(u => u.UserLoginId == userId);
+                if (user != null)
                 {
-                    //Using IQueryable for better performance.
-                    IQueryable<User> users = objectContext.Users;
-                    //Getting the user model.
-                    var user = users.Where(u => u.UserLoginId == userId).FirstOrDefault();
-                    if (user != null)
-                    {
-                        //Getting the user prfile from user model.
-                        userProfile = MapProperties(user);
-                    }
-                    else
-                    {
-                        //Exception if user not found
-                        throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
-                    }
+                    //Getting the user prfile from user model.
+                    userProfile = MapProperties(user);
                 }
+                else
+                {
+                    //Exception if user not found
+                    throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
+                }
+            }
 
-                //return user profile
-                return userProfile;
-            }
-            catch (NoDataFoundException)
-            {
-                //throw the exception
-                throw;
-            }
-            catch (Exception)
-            {
-                //throw the exception
-                throw;
-            }
+            //return user profile
+            return userProfile;
         }
 
         /// <summary>
@@ -83,40 +70,31 @@ namespace Smps.Infrastructure.Data.Repositories
         public UserProfile ValidateUser(string userId, string password)
         {
             //The User Profile Object.
-            UserProfile userProfile = null;
-            try
+            UserProfile userProfile;
+            using (SMPSEntities objectContext = new SMPSEntities())
             {
-                using (SMPSEntities objectContext = new SMPSEntities())
+                //Using IQueryable for better performance.
+                IQueryable<User> users = objectContext.Users;
+                //Getting the user model.
+                var user = users.FirstOrDefault(u => u.UserLoginId == userId && u.UserLoginPassword == password);
+                //Checks if user is not null.
+                if (user != null)
                 {
-                    //Using IQueryable for better performance.
-                    IQueryable<User> users = objectContext.Users;
-                    //Getting the user model.
-                    var user = users.Where(u => u.UserLoginId == userId && u.UserLoginPassword == password).FirstOrDefault();
-                    //Checks if user is not null.
-                    if (user != null)
-                    {
-                        // Getting the user prfile from user model.
-                        //Maps the properties from user model to user profile
-                        //And return the same.
-                        userProfile = MapProperties(user);
-                    }
-                    else
-                    {
-                        //throw the exception
-                        //With an error message.
-                        throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
-                    }
+                    // Getting the user prfile from user model.
+                    //Maps the properties from user model to user profile
+                    //And return the same.
+                    userProfile = MapProperties(user);
                 }
+                else
+                {
+                    //throw the exception
+                    //With an error message.
+                    throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
+                }
+            }
 
-                //return user profile
-                return userProfile;
-            }
-            catch (Exception)
-            {
-                //throw the exception
-                //This is a generic exception
-                throw;
-            }
+            //return user profile
+            return userProfile;
         }
 
         /// <summary>
@@ -127,36 +105,29 @@ namespace Smps.Infrastructure.Data.Repositories
         private static UserProfile MapProperties(User user)
         {
             //The User Profile Object.
-            UserProfile userProfile = null;
-            try
+            UserProfile userProfile;
+            //Check for null condition
+            if (user != null)
             {
-                //Check for null condition
-                if (user != null)
+                //Mapping all the properties.
+                userProfile = new UserProfile
                 {
-                    //Mapping all the properties.
-                    userProfile = new UserProfile();
-                    //First Name
-                    userProfile.FirstName = user.FirstName;
-                    //Last Name
-                    userProfile.LastName = user.LastName;
-                    //Mobile Number
-                    userProfile.MobileNumber = user.MobileNumber;
-                    //Parking slot number.
-                    userProfile.ParkingSlotNumber = user.ParkingSlotNumber;
-                    //User Type.
-                    userProfile.UserType = user.UserType;
-                }
-                else
-                {
-                    //throw the exception
-                    throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
-                }
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    MobileNumber = user.MobileNumber,
+                    ParkingSlotNumber = user.ParkingSlotNumber,
+                    UserType = user.UserType
+                };
+                //First Name
+                //Last Name
+                //Mobile Number
+                //Parking slot number.
+                //User Type.
             }
-            catch (Exception)
+            else
             {
                 //throw the exception
-                //This is a generic exception
-                throw;
+                throw new NoDataFoundException(ErrorMessages.ApplicationErrorMessage);
             }
 
             //return user profile

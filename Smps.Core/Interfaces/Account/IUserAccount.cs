@@ -10,7 +10,7 @@
 
 namespace Smps.Core.Interfaces.Account
 {
-    using Smps.Core.BusinessObjects.Account;
+    using BusinessObjects.Account;
 
     /// <summary>
     /// This interface contains the methods related to user profile.

@@ -26,7 +26,7 @@ namespace Smps.WebApi.WindsorCastleResolver
         /// <summary>
         /// Whether disposed or not.
         /// </summary>
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WindsorCompositionRoot" /> class.
@@ -50,11 +50,11 @@ namespace Smps.WebApi.WindsorCastleResolver
             Type controllerType)
         {
             var controller =
-                (IHttpController)this.container.Resolve(controllerType);
+                (IHttpController)container.Resolve(controllerType);
 
             request.RegisterForDispose(
                 new Release(
-                    () => this.container.Release(controller)));
+                    () => container.Release(controller)));
 
             return controller;
         }
@@ -66,7 +66,7 @@ namespace Smps.WebApi.WindsorCastleResolver
         /// </summary>
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
         }
 
         /// <summary>
@@ -75,14 +75,14 @@ namespace Smps.WebApi.WindsorCastleResolver
         /// <param name="disposing">Disposing or not.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!disposedValue)
             {
                 if (disposing)
                 {
-                    this.container.Dispose();
+                    container.Dispose();
                 }
 
-                this.disposedValue = true;
+                disposedValue = true;
             }
         }
         #endregion
@@ -111,7 +111,7 @@ namespace Smps.WebApi.WindsorCastleResolver
             /// </summary>
             public void Dispose()
             {
-                this.release();
+                release();
             }
         }
     }

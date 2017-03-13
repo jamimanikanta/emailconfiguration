@@ -8,11 +8,11 @@
 
 namespace Smps.Core.Services
 {
-    using System;
-    using Smps.Core.BusinessObjects.Account;
-    using Smps.Core.Interfaces.Account;
-    using Smps.Core.Interfaces.Account.Repositories;
-    using SMPS.CrossCutting.CustomExceptions;
+    
+    using BusinessObjects.Account;
+    using Interfaces.Account;
+    using Interfaces.Account.Repositories;
+    
     
     /// <summary>
     /// This class contains the methods related to user account.
@@ -24,7 +24,7 @@ namespace Smps.Core.Services
         /// Of the user account.
         /// This would be used across this class.
         /// </summary>
-        private IUserAccountRepository userAccount;
+        private readonly IUserAccountRepository userAccount;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserAccount" /> class.
@@ -34,15 +34,8 @@ namespace Smps.Core.Services
         /// <param name="userAccount">The object instance.</param>
         public UserAccount(IUserAccountRepository userAccount)
         {
-            try
-            {
-                //Storing the object instance.
-                this.userAccount = userAccount;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //Storing the object instance.
+            this.userAccount = userAccount;
         }
 
         /// <summary>
@@ -52,19 +45,8 @@ namespace Smps.Core.Services
         /// <returns>The user profile.</returns>
         public UserProfile GetUserProfile(string userId)
         {
-            try
-            {
-                //returning the user profile.
-               return this.userAccount.GetUserProfile(userId);
-            }
-            catch (NoDataFoundException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //returning the user profile.
+            return userAccount.GetUserProfile(userId);
         }
 
         /// <summary>
@@ -75,19 +57,8 @@ namespace Smps.Core.Services
         /// <returns>The user profile.</returns>
         public UserProfile ValidateUser(string userId, string password)
         {
-            try
-            {
-                //returning the user profile.
-                return this.userAccount.ValidateUser(userId, password);
-            }
-            catch (NoDataFoundException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //returning the user profile.
+            return userAccount.ValidateUser(userId, password);
         }
     }
 }

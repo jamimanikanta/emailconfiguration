@@ -1,16 +1,16 @@
 ﻿describe("Login Controller Test", function () {
-    var controller, UsersController,scope,$rootscope;
+    var controller, usersController,scope,$rootscope;
 
     //// Load our api.users module
     beforeEach(module('SMPSapp','ui.router'));
 
     //// Inject the $controller service to create instances of the controller (UsersController) we want to test
-    beforeEach(inject(function (_$controller_, $rootScope, userAccountService) {
+    beforeEach(inject(function ($controller, $rootScope, userAccountService) {
         scope = $rootScope.$new();
         $rootscope = $rootScope;
-        userAccountService = userAccountService;
-        controller = _$controller_;
-        UsersController = controller('loginCtrl', { $scope: scope, $rootScope: $rootScope, userAccountService: userAccountService });
+        
+        controller = $controller;
+        usersController = controller('loginCtrl', { $scope: scope, $rootScope: $rootScope, userAccountService: userAccountService });
     }));
 
     it("Validate Login", function () {

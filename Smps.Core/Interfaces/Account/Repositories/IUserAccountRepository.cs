@@ -14,7 +14,7 @@
 
 namespace Smps.Core.Interfaces.Account.Repositories
 {
-    using Smps.Core.BusinessObjects.Account;
+    using BusinessObjects.Account;
 
     /// <summary>
     /// This interface consists of methods related to user account.

@@ -4,31 +4,22 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Smps.Infrastructure.Tests.Account
-{
-    using System;
-    using System.Linq;
-    using Castle.MicroKernel.Registration;
-    using Castle.Windsor;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Smps.Core.BusinessObjects.Account;
-    using Smps.Core.Interfaces.Account;
-    using Smps.Infrastructure;
-    using Moq;
-    using Core.Interfaces.Account.Repositories;
-    using Smps.Infrastructure.Data.Repositories;
-    using System.Collections.Generic;
-    using System.Data.Entity;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Smps.Infrastructure;
 
+namespace SMPA.DAL.Tests.Account
+{
     /// <summary>
     /// Test class for User Account Repository
     /// </summary>
     [TestClass]
     public class EfUserAccountRepositoryTest
     {
-        public IQueryable<User> userProfile { get; set; }
+        public IQueryable<User> UserProfile { get; set; }
 
-        private Mock<SMPSEntities> mockContext;
+       // private Mock<SMPSEntities> mockContext;
         /// <summary>
         /// Initializes a new instance of the <see cref="EfUserAccountRepositoryTest" /> class.
         /// </summary>
@@ -40,7 +31,7 @@ namespace Smps.Infrastructure.Tests.Account
             //mockContext.Setup(m => m.Users).Returns(mockSet.Object);
             //// userProfile = new User() { FirstName = "venkatesh", LastName = "pydi" };
 
-            userProfile = new List<User>
+            UserProfile = new List<User>
             {
                 new User { FirstName = "Venkatesh",UserLoginId="venkatesh", UserLoginPassword="pydi" }
             }.AsQueryable();

@@ -10,13 +10,13 @@
 
 namespace Smps.WebApi.Controllers
 {
-    using System;
-    using System.Web;
+    
+    
     using System.Web.Http;
-    using System.Web.Http.Cors;
+    
     using Core.BusinessObjects.Account;
-    using Smps.Core.Interfaces.Account;
-    using SMPS.CrossCutting.CustomExceptions;
+    using Core.Interfaces.Account;
+    
 
     /// <summary>
     /// As a Technical Lead I want to create a solution using N- Tier architecture in visual studio 2015 
@@ -32,7 +32,7 @@ namespace Smps.WebApi.Controllers
         /// The user account object.
         //  This is used across this class.
         /// </summary>
-        private IUserAccount obj;
+        private readonly IUserAccount obj;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserAccountController" /> class.
@@ -55,22 +55,9 @@ namespace Smps.WebApi.Controllers
         [HttpGet]
         public UserProfile ValidateUser(string userId, string password)
         {
-            try
-            {
-                //Getting user profile.
-                UserProfile userProfile = this.obj.ValidateUser(userId, password);
-                return userProfile;
-            }
-            catch (NoDataFoundException)
-            {
-                //throw the exception
-                throw;
-            }
-            catch (Exception)
-            {
-                //throw the exception
-                throw;
-            }
+            //Getting user profile.
+            UserProfile userProfile = obj.ValidateUser(userId, password);
+            return userProfile;
         }
 
         /// <summary>
@@ -81,22 +68,9 @@ namespace Smps.WebApi.Controllers
         [HttpGet]
         public UserProfile GetUserProfile(string userId)
         {
-            try
-            {
-                //Getting user profile.
-                UserProfile userProfile = this.obj.GetUserProfile(userId);
-                return userProfile;
-            }
-            catch (NoDataFoundException)
-            {
-                //throw the exception
-                throw;
-            }
-            catch (Exception)
-            {
-                //throw the exception
-                throw;
-            }
+            //Getting user profile.
+            UserProfile userProfile = obj.GetUserProfile(userId);
+            return userProfile;
         }
     }
 }

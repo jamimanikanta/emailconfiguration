@@ -6,15 +6,12 @@
 
 namespace Smps.WebApi.Tests.Account
 {
-    using System;
-    using System.Linq;
-    using Castle.MicroKernel.Registration;
-    using Castle.Windsor;
+    
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Smps.Core.BusinessObjects.Account;
-    using Smps.Core.Interfaces.Account;
-    using Smps.Infrastructure;
-    using Smps.WebApi.Controllers;
+    using Core.BusinessObjects.Account;
+    using Core.Interfaces.Account;
+    
+    using Controllers;
     using Moq;
 
     /// <summary>
@@ -23,14 +20,14 @@ namespace Smps.WebApi.Tests.Account
     [TestClass]
     public class UserAccountTest
     {
-        public UserProfile userProfile { get; set; }
+        public UserProfile UserProfile { get; set; }
 
-        private Mock<IUserAccount> mockRepository;
+        private readonly Mock<IUserAccount> mockRepository;
 
         public UserAccountTest()
         {
             mockRepository = new Mock<IUserAccount>();
-            userProfile = new UserProfile() { FirstName = "venkatesh", LastName = "pydi" };
+            UserProfile = new UserProfile() { FirstName = "venkatesh", LastName = "pydi" };
         }
 
         [TestMethod]
@@ -38,7 +35,7 @@ namespace Smps.WebApi.Tests.Account
         {
             ////Arange  
             var objUserAccount = new UserAccountController(mockRepository.Object);
-            mockRepository.Setup(u => u.ValidateUser(It.IsAny<string>(), It.IsAny<string>())).Returns(userProfile);
+            mockRepository.Setup(u => u.ValidateUser(It.IsAny<string>(), It.IsAny<string>())).Returns(UserProfile);
             string userName = "venkatesh", password = "pydi";
             //Act
             var result = objUserAccount.ValidateUser(userName, password);
@@ -52,7 +49,7 @@ namespace Smps.WebApi.Tests.Account
         {
             //Arrange
             var objUserAccount = new UserAccountController(mockRepository.Object);
-            mockRepository.Setup(u => u.GetUserProfile(It.IsAny<string>())).Returns(userProfile);
+            mockRepository.Setup(u => u.GetUserProfile(It.IsAny<string>())).Returns(UserProfile);
 
             //Act
             var result = objUserAccount.GetUserProfile("venkatesh");

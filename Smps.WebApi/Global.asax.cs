@@ -16,7 +16,7 @@ namespace Smps.WebApi
     using System.Web.SessionState;
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
-    using Smps.WebApi.WindsorCastleResolver;
+    using WindsorCastleResolver;
    
     /// <summary>
     /// This class contains the web application details.
@@ -29,7 +29,7 @@ namespace Smps.WebApi
         public override void Init()
         {
             //Registering the post authenticate request
-            this.PostAuthenticateRequest += MvcApplication_PostAuthenticateRequest;
+            PostAuthenticateRequest += MvcApplication_PostAuthenticateRequest;
             //Calling base method.
             base.Init();
         }
