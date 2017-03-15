@@ -1,12 +1,12 @@
 ﻿<div class="login-container">
-    <!-- Epam logo  -->
+    <!-- Epam Logo  -->
     <!-- Start : Main content for the login page  -->
-    <div class="login-content clearfix">
+    <div class="login-content clearfix " >
 
-        <div class="left-container clearfix" style="display: none;">
-            <div class="login-board"></div>
+        <div class="clearfix" style="display: none;">
+            <div ></div>
         </div>
-        <div class="right-container clearfix">
+        <div class="clearfix">
 
 
             <!-- Begin # DIV Form -->
@@ -15,12 +15,12 @@
                 <!-- Begin # Login Form -->
                 <form id="login-form" ng-submit="login()">
                     <div id="innerContainer">
-                        <p> SMPS </p>
+                        <p>SMPS</p>
                     </div>
 
                     <!-- Begin # Home Form -->
-                    <div class="login-form">
-                        <div id="WarningMsgWrapperDiv" class="login-warning" style="visibility:hidden;">
+                    <div class="">
+                        <div id="WarningMsgWrapperDiv"  style="visibility:hidden;">
                             &nbsp;
                         </div>
                         <!-- Begin # Home Form -->
@@ -29,25 +29,25 @@
                         <div class="form-field">
                             <input id="username" name="username"
                                    ng-model="userObject.userName"
-                                   ng-minlength="6"
+                                   ng-minlength="6" 
                                    autofocus required
                                    placeholder="Please Enter Email-id"
-                                   type="email" class="inputtext form-control" aria-label="Username" />
+                                   type="email" class="form-control" aria-label="Username" />
                         </div>
                         <!-- End # DIV Form -->
                         <!-- Begin # Home Form -->
                         <div class="form-field">
                             <input id="password" type="password" name="password" ng-model="userObject.password"
                                    maxlength="16" autocomplete="off" required
-                                   placeholder="Please Enter Password" class="inputpassword form-control" />
+                                   placeholder="Please Enter Password" class="form-control" />
                         </div>
                         <!-- End # DIV Form -->
                     </div>
-                    <div id="languageContainer" class="language-container">
+                    <div id="languageContainer" class="">
                         <input type="hidden" name="L.language" id="LoginLanguage" value="en">
                     </div>
                     <!-- Begin # Home Form -->
-                    <div class="login-form-button pull-right">
+                    <div class="pull-right">
                         <button type="submit" class="uui-button blue">Login</button>
                     </div>
 
