@@ -31,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smps.UI.Web", "Smps.UI.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMPS.CrossCutting", "SMPS.CrossCutting\SMPS.CrossCutting.csproj", "{8D215F86-0634-437F-ABBE-29D51F5D1A59}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{10EC1DDA-A398-4528-9F0C-6EECDE4E3213}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
