@@ -92,7 +92,7 @@
     </ProjectReference>
     <ProjectReference Include="..\SMPS.Infrastructure\Smps.Infrastructure.csproj">
       <Project>{4f99aab3-cabb-4da3-8a6b-c127de1dc4c0}</Project>
-      <Name>Smps.DAL</Name>
+      <Name>Smps.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

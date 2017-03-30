@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation Layer", "Presentation Layer", "{DE5B4940-24BF-4272-9AF5-F11FB5F7E11A}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smps.UI.Web", "Smps.UI.Web\Smps.UI.Web.csproj", "{2335169F-C196-45B2-A9D1-F03C9772FA18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMPS.CrossCutting", "SMPS.CrossCutting\SMPS.CrossCutting.csproj", "{8D215F86-0634-437F-ABBE-29D51F5D1A59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{10EC1DDA-A398-4528-9F0C-6EECDE4E3213}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
