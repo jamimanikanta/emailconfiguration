@@ -12,6 +12,8 @@
 //To make it persistent ignorant
 //-----------------------------------------------------------------------
 
+using System;
+
 namespace Smps.Infrastructure.Data.Repositories
 {
     
@@ -20,7 +22,7 @@ namespace Smps.Infrastructure.Data.Repositories
     using Core.BusinessObjects.Account;
     using Core.Interfaces.Account.Repositories;
     using SMPS.CrossCutting.Constants;
-    using SMPS.CrossCutting.CustomExceptions;
+    using SMPS.CrossCutting.CustomExceptions; 
 
     /// <summary>
     /// This class contains the methods related to user account.
@@ -39,12 +41,13 @@ namespace Smps.Infrastructure.Data.Repositories
         {
             //The User Profile Object.
             UserProfile userProfile;
+            int id = Convert.ToInt32(userId);
             using (SMPSEntities objectContext = new SMPSEntities())
             {
                 //Using IQueryable for better performance.
                 IQueryable<User> users = objectContext.Users;
                 //Getting the user model.
-                var user = users.FirstOrDefault(u => u.UserLoginId == userId);
+                var user = users.FirstOrDefault(u => u.EmpNo == id);
                 if (user != null)
                 {
                     //Getting the user prfile from user model.
@@ -116,7 +119,8 @@ namespace Smps.Infrastructure.Data.Repositories
                     LastName = user.LastName,
                     MobileNumber = user.MobileNumber,
                     ParkingSlotNumber = user.ParkingSlotNumber,
-                    UserType = user.UserType
+                    UserType = user.UserType,
+                    EmpNo = user.EmpNo
                 };
                 //First Name
                 //Last Name
