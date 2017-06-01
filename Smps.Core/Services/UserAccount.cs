@@ -8,12 +8,14 @@
 
 namespace Smps.Core.Services
 {
-    
+    using System;
     using BusinessObjects.Account;
     using Interfaces.Account;
     using Interfaces.Account.Repositories;
-    
-    
+    using System.Collections.Generic;
+
+
+
     /// <summary>
     /// This class contains the methods related to user account.
     /// </summary>
@@ -38,6 +40,11 @@ namespace Smps.Core.Services
             this.userAccount = userAccount;
         }
 
+        public List<UserProfile> GetAllSeekers()
+        {
+           return  userAccount.GetAllSeekers();
+        }
+
         /// <summary>
         /// Gets the user profile.
         /// </summary>
@@ -47,6 +54,7 @@ namespace Smps.Core.Services
         {
             //returning the user profile.
             return userAccount.GetUserProfile(userId);
+
         }
 
         /// <summary>
@@ -59,6 +67,7 @@ namespace Smps.Core.Services
         {
             //returning the user profile.
             return userAccount.ValidateUser(userId, password);
+
         }
     }
 }

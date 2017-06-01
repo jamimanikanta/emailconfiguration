@@ -18,6 +18,7 @@ namespace Smps.Infrastructure
         public User()
         {
             this.HolderDetails = new HashSet<HolderDetail>();
+            this.SeekerDetails = new HashSet<SeekerDetail>();
         }
     
         public int Id { get; set; }
@@ -26,13 +27,15 @@ namespace Smps.Infrastructure
         public string LastName { get; set; }
         public Nullable<long> MobileNumber { get; set; }
         public string UserLoginId { get; set; }
+        public string UserLoginPassword { get; set; }
         public string UserType { get; set; }
         public string ParkingSlotNumber { get; set; }
         public string Location { get; set; }
         public short OperationType { get; set; }
-        public string UserLoginPassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HolderDetail> HolderDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SeekerDetail> SeekerDetails { get; set; }
     }
 }

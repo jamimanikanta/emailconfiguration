@@ -15,6 +15,7 @@
 namespace Smps.Core.Interfaces.Account.Repositories
 {
     using BusinessObjects.Account;
+    using System.Collections.Generic;
 
     /// <summary>
     /// This interface consists of methods related to user account.
@@ -35,5 +36,10 @@ namespace Smps.Core.Interfaces.Account.Repositories
         /// <param name="password">The password.</param>
         /// <returns>The user profile.</returns>
         UserProfile ValidateUser(string userId, string password);
+
+        List<UserProfile> GetAllSeekers();
+
+
+
     }
 }

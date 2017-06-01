@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Application\Holder\holderCtrl.js" />
+    <Content Include="Application\Seeker\SeekerCtrl.js" />
     <Content Include="Application\specs\loginCtrl.spec.js" />
     <Content Include="Application\UserAccount\UserAccountService.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -1094,6 +1095,14 @@
     <Content Include="Scripts\uui-tooltip.min.js" />
     <Content Include="Scripts\uui-tree-grid.min.js" />
     <Content Include="Views\Holder\Holder.html" />
+    <Content Include="Views\Holder\HolderErrorpage.html" />
+    <Content Include="Views\Seeker\Seeker.html" />
+    <Content Include="Views\Seeker\SeekerError.html" />
+    <Content Include="Views\Seeker\SeekerRefNo.html" />
+    <Content Include="Views\Seeker\SeekerRNAndRep.html" />
+    <Content Include="Views\Seeker\SeekerSlotandRefNO.html" />
+    <Content Include="Views\Seeker\SeekerSlotNo.html" />
+    <Content Include="Views\Seeker\SeekerSlotNoRep.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

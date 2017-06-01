@@ -13,6 +13,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Smps.Infrastructure.Data.Repositories
 {
@@ -21,7 +22,7 @@ namespace Smps.Infrastructure.Data.Repositories
     using Infrastructure;
     using Core.BusinessObjects.Account;
     using Core.Interfaces.Account.Repositories;
-    using SMPS.CrossCutting.Constants;
+    using SMPS.CrossCutting.Constants; 
     using SMPS.CrossCutting.CustomExceptions; 
 
     /// <summary>
@@ -40,9 +41,10 @@ namespace Smps.Infrastructure.Data.Repositories
         public UserProfile GetUserProfile(string userId)
         {
             //The User Profile Object.
-            UserProfile userProfile;
+            UserProfile userProfile; 
             int id = Convert.ToInt32(userId);
-            using (SMPSEntities objectContext = new SMPSEntities())
+            
+            using (MYEntity objectContext = new MYEntity())
             {
                 //Using IQueryable for better performance.
                 IQueryable<User> users = objectContext.Users;
@@ -64,6 +66,11 @@ namespace Smps.Infrastructure.Data.Repositories
             return userProfile;
         }
 
+        
+
+
+
+
         /// <summary>
         /// Validates the user and returns profile
         /// </summary>
@@ -74,7 +81,7 @@ namespace Smps.Infrastructure.Data.Repositories
         {
             //The User Profile Object.
             UserProfile userProfile;
-            using (SMPSEntities objectContext = new SMPSEntities())
+            using (MYEntity objectContext = new MYEntity())
             {
                 //Using IQueryable for better performance.
                 IQueryable<User> users = objectContext.Users;
@@ -137,5 +144,37 @@ namespace Smps.Infrastructure.Data.Repositories
             //return user profile
             return userProfile;
         }
+
+        public List<UserProfile> GetAllSeekers()
+        {
+            
+            List<UserProfile> listofprofilers= new List<UserProfile>();
+            List<User> listofseekerusers= new List<User>();
+            
+            using (MYEntity objectContext = new MYEntity())
+            {
+                listofseekerusers = objectContext.Users.Where(u => u.UserType == "seeker").ToList();
+                foreach (User usr in listofseekerusers)
+                {
+                    UserProfile userProfile= new UserProfile();
+                    userProfile = MapProperties(usr);
+                    listofprofilers.Add(userProfile);
+
+
+                }
+
+
+
+                return listofprofilers.ToList();
+
+            }
+
+
+
+        }
+
+
+
+
     }
 }

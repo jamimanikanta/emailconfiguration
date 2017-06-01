@@ -4,7 +4,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>SMPS</TargetDatabaseName>
     <DeployScriptFileName>Smps.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=ECSC003002EF\SQLEXPRESS;Persist Security Info=True;User ID=sa;Pooling=False;password=Epam@1234</TargetConnectionString>
+    <TargetConnectionString>Data Source=10.6.196.236;User ID=sa;Password=Epam@1234;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>

@@ -8,6 +8,8 @@
 //Jira Id-2094
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Smps.Core.Interfaces.Account
 {
     using BusinessObjects.Account;
@@ -31,5 +33,8 @@ namespace Smps.Core.Interfaces.Account
         /// <param name="password">The password.</param>
         /// <returns>The user profile.</returns>
         UserProfile ValidateUser(string userId, string password);
+
+       List<UserProfile> GetAllSeekers();
+
     }
 }

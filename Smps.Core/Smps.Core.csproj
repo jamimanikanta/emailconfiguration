@@ -61,10 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\Holder\HolderPerson.cs" />
+    <Compile Include="BusinessObjects\Seeker\SeekerPerson.cs" />
     <Compile Include="Interfaces\Account\IUserAccount.cs" />
     <Compile Include="Interfaces\Account\Repositories\IUserAccountRepository.cs" />
     <Compile Include="BusinessObjects\Account\UserProfile.cs" />
+    <Compile Include="Interfaces\Holder\IHolderService.cs" />
+    <Compile Include="Interfaces\Holder\Repositories\IHolderServiceRepository.cs" />
+    <Compile Include="Interfaces\Seeker\ISeekerService.cs" />
+    <Compile Include="Interfaces\Seeker\Repositories\ISeekerServiceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HolderService.cs" />
+    <Compile Include="Services\SeekerService.cs" />
     <Compile Include="Services\UserAccount.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +97,7 @@
       <Name>SMPS.CrossCutting</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

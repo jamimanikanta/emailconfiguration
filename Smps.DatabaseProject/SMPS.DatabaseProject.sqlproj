@@ -68,6 +68,11 @@
   <ItemGroup>
     <Build Include="01.Tables\01.Users.sql" />
     <Build Include="01.Tables\02.HolderDetails.sql" />
+    <Build Include="01.Tables\03.SeekerDetails.sql" />
+    <Build Include="03.StoredProcedures\sp_holderdatainsertion.sql" />
+    <Build Include="03.StoredProcedures\sp_seekerdetails.sql" />
+    <Build Include="03.StoredProcedures\sp_CheckAndAllocateslote.sql" />
+    <Build Include="03.StoredProcedures\sp_UpdatingOperationaAndAllocation.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Smps.DatabaseProject.publish.xml" />

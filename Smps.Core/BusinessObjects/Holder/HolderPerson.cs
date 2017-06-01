@@ -1,21 +1,12 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="UserProfile.cs" company="CompanyName">
-//     Company copyright tag.
-// </copyright>
-//<summary>This is the User Profile class.</summary>
-//-----------------------------------------------------------------------
+﻿
 
-namespace Smps.Core.BusinessObjects.Account
+
+
+namespace Smps.Core.BusinessObjects.Holder
 {
-    /// <summary>
-    /// Contains the user profile.
-    /// </summary>
-    public class UserProfile
+  public  class HolderPerson
     {
-        /// <summary>
-        /// Gets or sets the first name.
-        /// </summary>
-        /// <value>The first name of the customer.</value>
+
         public string FirstName { get; set; }
 
         /// <summary>
@@ -42,7 +33,19 @@ namespace Smps.Core.BusinessObjects.Account
         /// <value>The user type of the customer.</value>
         public string UserType { get; set; }
 
+        public string Username { get; set; }
 
-        public int EmpNo { set; get; }
+
+        public int? EmpNo { get; set; }
+
+        public int OperationType { get; set; }
+
+        public string Startdate { get; set; }
+
+        public string Enddate { get; set; }
+
+        public string SeekerId { set; get; }
+
+
     }
 }

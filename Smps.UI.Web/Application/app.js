@@ -29,9 +29,14 @@
      * that it changes your application views based on state of the
      * application and not just the route URL.
      */
-    app.config(function ($stateProvider, $urlRouterProvider/*$locationProvider*/) {
+    app.config(function ($stateProvider, $urlRouterProvider) {
+        debugger;
         // Gets the user information from the service.
-        function oAuth($q, userAccountService) {
+        function oAuth($q, userAccountService)
+        {
+
+            debugger;
+
             var userInfo = userAccountService.getUserInfo();
             if (userInfo) {
                 return $q.when(userInfo);
@@ -39,20 +44,116 @@
                 return $q.reject({ authenticated: false });
             }
         }
+        //$locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('login');
-        $stateProvider.state('login', {
-            url: '/login',
-            templateUrl: 'Views/UserAccount/login.html',
-            controller: 'loginCtrl'
-        })
-        .state('home', {
-            url: '/home',
-            templateUrl: 'Views/Holder/Holder.html',
-            controller: 'holderCtrl',
-            resolve: {
-                auth: oAuth
-            }
-        });
+        $stateProvider.state('login',
+            {
+                url: '/login',
+                templateUrl: 'Views/UserAccount/login.html',
+                controller: 'loginCtrl'
+            })
+            .state('home',
+            {
+                url: '/home',
+                templateUrl: 'Views/Holder/Holder.html',
+                controller: 'holderCtrl',
+                resolve: {
+                    auth: oAuth
+                }
+            }).state('HolderErrorpage',
+                {
+                    url: '/HolderErrorpage/:name?',
+                    templateUrl: 'Views/Holder/HolderErrorpage.html',
+                    controller: 'holderCtrl',
+
+                    resolve: {
+                        auth: oAuth
+                    }
+                }
+            ).state('Seeker',
+            {
+                url: '/Seeker',
+                templateUrl: 'Views/Seeker/Seeker.html',
+                controller: 'SeekerCtrl',
+
+                resolve: {
+                    auth: oAuth
+                }
+            })
+            .state('SeekerSN&RN',
+            {
+                url: '/SeekerSlotAndRefNO',
+                templateUrl: 'Views/Seeker/SeekerSlotandRefNO.html',
+                controller: 'SeekerCtrl',
+                params: {
+                    obj: null
+                },
+                resolve: {
+                    auth: oAuth
+                }
+            })
+            .state('SeekerSN',
+            {
+                url: '/SeekerSlotNo',
+                templateUrl: 'Views/Seeker/SeekerSlotNo.html',
+                controller: 'SeekerCtrl',
+                params: {
+                    obj: null
+                },
+                resolve: {
+                    auth: oAuth
+                }
+            })
+            .state('SeekerRN',
+            {
+                url: '/SeekerRefNo',
+                templateUrl: 'Views/Seeker/SeekerRefNo.html',
+                controller: 'SeekerCtrl',
+                params: {
+                    obj: null
+                },
+                resolve: {
+                    auth: oAuth
+                }
+            })
+            .state('SeekerRN&Rep',
+            {
+                url: '/SeekerRNAndRep',
+                templateUrl: 'Views/Seeker/SeekerRNAndRep.html',
+                controller: 'SeekerCtrl',
+                params: {
+                    obj: null
+                },
+                resolve: {
+                    auth: oAuth
+                }
+            })
+            .state('SeekerPN&Rep',
+            {
+                url: '/SeekerSlotNoRep',
+                templateUrl: 'Views/Seeker/SeekerSlotNoRep.html',
+                controller: 'SeekerCtrl',
+                params: {
+                    obj: null
+                },
+                resolve: {
+                    auth: oAuth
+                }
+            })
+            .state('SeekerError',
+            {
+                url: '/SeekerError',
+                templateUrl: 'Views/Seeker/SeekerError.html',
+                controller: 'SeekerCtrl',
+                params: {
+                    obj: null
+                },
+                resolve: {
+                    auth: oAuth
+                }
+            });
+
+        //$locationProvider.html5Mode(true);
     });
     /*
      * The new $stateProvider works similar to Angular's v1 router, but it
@@ -66,7 +167,8 @@
      *   states aka nested states.'localStorageService',,localStorageService
      */
     app.run(['$rootScope', '$state', 'userAccountService', function ($rootScope, $state, userAccountService) {
-        $rootScope.apiURL = 'http://10.6.196.236/SMPS.WebAPI/api/';
+        debugger;
+        $rootScope.apiURL = 'http://localhost:49888/api/';
         //On State change startsthe below block will executed
         $rootScope.$on('$stateChangeStart', function (event, toState) {
             // Comparing current state with login
@@ -87,6 +189,7 @@
         });
         //On State change if errors occers Then the below block will executed
         $rootScope.$on('$stateChangeError', function (event, current, previous, eventObj) {
+            debugger;
             if (eventObj.authenticated === false) {
                 // Changing the state from the current page to login page
                 $state.go('login');
